@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account </title>
+    <link rel="icon" href="~/Images/Book Hub Favicon.png" type="image/x-icon" />
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link href="~/css/admin/adminlayout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">Book<span>Hub</span></div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <div class="profile-image">
+            <img src="~/Images/main-logo.png" alt="profile" class="image" />
+            <label class="profile-text">User Account</label>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="@Url.Action("Library", "User")">
+                    <i class="fas fa-book"></i>
+                    <span class="links_name">Library</span>
+                </a>
+                <span class="tooltip">Library</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Cart", "User")">
+                    <i class="fas fa-cart-plus"></i>
+                    <span class="links_name">Cart</span>
+                </a>
+                <span class="tooltip">Cart</span>
+            </li>
+            <li>
+                <a href="@Url.Action("PendingBooks", "User")">
+                    <i class="far fa-clock"></i>
+                    <span class="links_name">Pending Books</span>
+                </a>
+                <span class="tooltip">Pending Books</span>
+            </li>
+            <li>
+                <a href="@Url.Action("AccountDetails", "User")">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="links_name">Account Details</span>
+                </a>
+                <span class="tooltip">Account Details</span>
+            </li>
+            <li>
+                <a href="@Url.Action("PurchaseHistory", "User")">
+                    <i class="fas fa-history"></i>
+                    <span class="links_name">Purchase History</span>
+                </a>
+                <span class="tooltip">Purchase History</span>
+            </li>
+
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="head">
+            <div class="logo">
+                <img src="~/Images/Book Hub Favicon.png" alt="profile" class="logo-image" />
+                <h2> User DashBoard</h2>
+
+            </div>
+
+            <div class="header-login">
+                <div class="dropdown">
+                    <button class="dropdown-toggle"><i class='bx bx-user-circle icon'></i><i class='bx bxs-down-arrow arrow'></i></button>
+                    <div class="dropdown-menu">
+                        <a href="#"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-body">
+            @RenderBody()
+        </div>
+        @*   <a href="@Url.Action("ProfessorAcc", "Admin")" class="sub-item">Professors</a>
+        <a href="@Url.Action("StudentAcc", "Admin")"> Students</a> *@
+    </section>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();
+        });
+
+
+        function menuBtnChange() {
+            if (sidebar.classList.contains("open")) {
+                closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            } else {
+                closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            }
+        }
+    </script>
+    <script>
+        const dropdownToggle = document.querySelector(".dropdown-toggle");
+        const dropdownMenu = document.querySelector(".dropdown-menu");
+
+        dropdownToggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (!dropdownToggle.contains(e.target)) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var currentUrl = window.location.href;
+
+            var links = document.querySelectorAll('.nav-list a');
+            links.forEach(function (link) {
+                var linkUrl = link.getAttribute('href');
+
+                if (currentUrl.indexOf(linkUrl) !== -1) {
+
+                    links.forEach(function (otherLink) {
+                        otherLink.closest('a').classList.remove('active');
+                    });
+
+
+                    link.closest('a').classList.add('active');
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+

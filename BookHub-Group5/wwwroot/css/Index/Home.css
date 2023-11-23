@@ -1,0 +1,219 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+body {
+    width: 100%;
+    background-color: #fff;
+}
+
+#head {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #fff;
+}
+
+    header .header-nav {
+        flex: .5;
+        height: 100%;
+        color: black;
+    }
+
+        header .header-nav nav {
+            height: 100%;
+            width: 100%;
+        }
+
+        header .header-nav ul {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+            header .header-nav ul li {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s all ease;
+            }
+
+                header .header-nav ul li:hover {
+                    background-color: #706233;
+                }
+
+                    header .header-nav ul li:hover a {
+                        color: #fff;
+                    }
+
+                header .header-nav ul li a {
+                    color: #000;
+                    font-size: 18px;
+                    font-family: 'Times New Roman';
+                    padding: 20px;
+                }
+
+    header .header-logo {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+        header .header-logo img {
+            height: 100%;
+            width: 100px;
+            padding: 10px;
+            margin: 0 20px;
+        }
+
+        header .header-logo h2 {
+            font-size: 35px;
+            font-family: 'Times New Roman';
+        }
+
+            header .header-logo h2 span {
+                color: #706233;
+            }
+
+    header .header-login {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+        header .header-login .fa-shopping-cart {
+            margin-right: 50px;
+        }
+
+        header .header-login i {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 25px;
+            border-radius: 50%;
+        }
+
+.main {
+    height: calc(100% - 80px);
+    width: 100%;
+    position: relative;
+}
+
+.bg-img {
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    border-bottom: 5px solid #FAE769;
+    border-top: 5px solid #FAE769;
+}
+
+    .bg-img img {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        filter: brightness(50%);
+    }
+
+    .bg-img .tagline {
+        height: 40vh;
+        width: 1000px;
+        position: absolute;
+        top: 35%;
+        left: 5%;
+        color: #fff;
+    }
+
+        .bg-img .tagline .lines1 {
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bg-img .tagline .lines2 {
+            width: 70%;
+            height: 150px;
+            padding-top: 20px;
+        }
+
+        .bg-img .tagline .lines3 {
+            height: calc(100% - 220px);
+            display: flex;
+            align-items: center;
+        }
+
+        .bg-img .tagline h2 {
+            color: #fff;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+
+        .bg-img .tagline p {
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-family: Arial;
+            line-height: 30px;
+            text-align: justify;
+        }
+
+        .bg-img .tagline button {
+            width: 200px;
+            background-color: #706233;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            height: 60px;
+            transition: 0.5s all ease;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+            .bg-img .tagline button:hover {
+                background-color: #FAE7C9;
+                color: #000;
+            }
+
+        .bg-img .tagline i {
+            font-size: 20px;
+            padding: 5px 15px 5px 0;
+        }
+
+.mySlides {
+    display: none;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+
+#body {
+    height: 100vh;
+    width: 100%;
+}

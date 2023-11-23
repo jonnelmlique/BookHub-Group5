@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "BookHub - Ebook Online Shop";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
+    <link href="~/css/index/home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+<body>
+    <section id="head">
+        <header>
+            <div class="header-logo">
+                <img src="~/Images/main-logo.png" alt="LOGO">
+                <h2>Book<span>HuB</span></h2>
+            </div>
+            <div class="header-nav">
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
+                        <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
+                        <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
+                        <li><a href="#">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-login">
+                <i class="fas fa-search"></i>
+                <li><a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a></li>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </header>
+        <div class="main">
+            <div class="mySlides fade bg-img">
+                <img src="~/Images/bg-ebook.jpg" style="width:100%">
+                <div class="tagline">
+                    <div class="lines1">  <h2>Find What You Like</h2></div>
+                    <div class="lines2"> <p>Explore a world of endless stories in our digital library, where every e-book brings tales to life, one click at a time. Immerse yourself in the magic of reading, all from the comfort of your screen.</p></div>
+                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                </div>
+            </div>
+            <div class="mySlides fade bg-img">
+                <img src="~/Images/bg1.jpg" style="width:100%">
+                <div class="tagline">
+                    <div class="lines1">  <h2>Start Your Digital Reading Adventure</h2></div>
+                    <div class="lines2">  <p>Embark on your digital reading adventure now and expand your library with every click, as we bring the world of literature to your fingertips.</p></div>
+                    <div class="lines3">  <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                </div>
+            </div>
+            <div class="mySlides fade bg-img">
+                <img src="~/Images/bg2.jpg" style="width:100%">
+                <div class="tagline">
+                    <div class="lines1"><h2>Unlock The Power of Book Reviews</h2></div>
+                    <div class="lines2"> <p>Create your account and embark on your literary journey. Let reviews be your compass as you explore the world of e-books with us.</p></div>
+                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                </div>
+            </div>
+            <div class="mySlides fade bg-img">
+                <img src="~/Images/bg3.jpg" style="width:100%">
+                <div class="tagline">
+                    <div class="lines1">  <h2>One Click Purchases</h2></div>
+                    <div class="lines2">  <p>Simplify your buying experience with one-click PayPal purchases. Enjoy seamless transactions for your favorite e-books with just a single click.</p></div>
+                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                </div>
+            </div>
+            <div class="mySlides fade bg-img">
+                <img src="~/Images/" style="width:100%">
+                <div class="tagline">
+                    <div class="lines1"><h2>Unlocking Worlds, One Click at a Time.</h2></div>
+                    <div class="lines2"> <p>Discover a digital library where stories come to life, and explore a world of endless possibilities. Immerse yourself, one e-book at a time, in the magic of storytelling.</p></div>
+                    <div class="lines3"><button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center; display:none;">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+    <section id="body">
+    </section>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000);
+        }
+    </script>
+</body>
+</html>

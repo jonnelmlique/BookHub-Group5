@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookHub Online Shop</title>
+    <link rel="icon" href="~/Images/Book Hub Favicon.png" type="image/x-icon" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
+    <link href="~/css/account/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+</head>
+<body>
+    <section id="head">
+        <header>
+            <div class="header-logo">
+                <a href="@Url.Action("Index", "Home")"> <img src="~/Images/Book Hub Favicon.png" alt="LOGO"></a>
+                <a href="@Url.Action("Index", "Home")"><h2>Book<span>HuB</span></h2></a>
+            </div>
+            <div class="header-nav">
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
+                        <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
+                        <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
+                        <li><a href="#">CONTACT</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="header-login">
+                <i class="fas fa-search"></i>
+                <li><a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a></li>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </header>
+        <div class="login">
+
+            <div class="login-page" id="myFlipCard">
+                <div class="inner">
+                    <div class="front">
+                        <div class="head">
+                            <h2>Book<span>Hub</span></h2>
+                        </div>
+                        <div class="form">
+                            <div class="login-inputs">
+                                <input type="text" placeholder="Enter your Username" class="inputs" />
+                                <input type="text" placeholder="Enter your Password" class="inputs" />
+                                <button> LOGIN </button>
+                                @Html.ActionLink("Admin", "Dashboard", "Admin", null, new { @class = "btn btn-primary" })
+                                <br />
+                                @Html.ActionLink("Customer", "Library", "User", null, new { @class = "btn btn-primary" })
+
+                            </div>
+                            <div class="login-links">
+
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                            <div class="login-sign">
+                                <span>Don't have any account? <a href="#" onclick="flipCard()">SIGN UP</a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="back">
+                        <div class="head">
+                            <h2>Sign <span>Up</span></h2>
+                        </div>
+                        <div class="form">
+                            <div class="login-inputs">
+                                <input type="text" placeholder="Enter your Firstname" class="inputs" />
+                                <input type="text" placeholder="Enter your Lastname" class="inputs" />
+                                <input type="text" placeholder="Username" class="inputs" />
+                                <input type="text" placeholder="Email" class="inputs" />
+                                <input type="text" placeholder="Enter your Password" class="inputs" />
+                                <br />
+                                <span> <input type="checkbox" class="chk-bx" /> I Agree in Terms & Conditions</span>
+
+
+                            </div>
+                            <div class="login-links">
+                                <button> SIGN IN </button>
+
+                            </div>
+                            <div class="login-sign">
+                                <span>Already have an account? <a href="#" onclick="flipCard()">LOGIN</a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <script>
+        function flipCard() {
+            var card = document.getElementById('myFlipCard');
+            card.classList.toggle('flipped');
+        }
+    </script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000);
+        }
+    </script>
+
+</body>
+</html>

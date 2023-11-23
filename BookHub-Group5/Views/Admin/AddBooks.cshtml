@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout/_AdminPage.cshtml";
+}
+=<link href="~/css/admin/addbooks.css" rel="stylesheet" />
+
+<div class="add-books">
+    <div class="title">
+        <a href="@Url.Action("Books", "Admin")"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2>ADD BOOK INFORMATION</h2>
+    </div>
+    <div class="book-body">
+        <div class="book-image">
+            <div class="image-file">
+                <img src="" class="add-img" />
+                <input type="file" id="myFile" name="filename" class="file-upload">
+            </div>
+            <div class="image-info">
+                <div class="information">
+                    <label class="info-lbl">Name of Book :</label>
+                    <input type="text" class="info-txt" />
+                </div>
+                <div class="information">
+                    <label class="info-lbl">Book Author :</label>
+                    <input type="text" class="info-txt" />
+                </div>
+                <div class="information">
+                    <label class="info-lbl">Book Price :</label>
+                    <input type="text" class="info-txt" />
+                </div>
+
+
+            </div>
+        </div>
+        <div class="book-details">
+            <div class="information">
+                <label class="info-lbl">Category :</label>
+                <input type="text" class="info-txt" />
+            </div>
+            <div class="information">
+                <label class="info-lbl">Genre :</label>
+                <input type="text" class="info-txt" />
+            </div>
+            <div class="information">
+                <label class="info-lbl">Release Year :</label>
+                <input type="text" class="info-txt" />
+            </div>
+            <div class="information desc">
+                <label class="info-lbl desc-lbl">Description :</label>
+                <textarea class="info-txt " rows="5"></textarea>
+            </div>
+            <div class="book-buttons">
+                <button class="book-btn">Add Book</button>
+                <button class="book-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>

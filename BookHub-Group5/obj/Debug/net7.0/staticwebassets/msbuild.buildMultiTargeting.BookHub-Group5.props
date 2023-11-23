@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BookHub-Group5.props" />
+</Project>

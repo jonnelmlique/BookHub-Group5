@@ -1,0 +1,377 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
+body {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#head {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #fff;
+}
+
+    header .header-nav {
+        flex: .5;
+        height: 100%;
+        color: black;
+    }
+
+        header .header-nav nav {
+            height: 100%;
+            width: 100%;
+        }
+
+        header .header-nav ul {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+            header .header-nav ul li {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.5s all ease;
+            }
+
+                header .header-nav ul li:hover {
+                    background-color: #706233;
+                }
+
+                    header .header-nav ul li:hover a {
+                        color: #fff;
+                    }
+
+                header .header-nav ul li a {
+                    color: #000;
+                    font-size: 18px;
+                    font-family: 'Times New Roman';
+                    padding: 20px;
+                }
+
+    header .header-logo {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+        header .header-logo img {
+            height: 100%;
+            width: 100px;
+            padding: 10px;
+            margin: 0 10px 0 30px;
+        }
+
+        header .header-logo h2 {
+            font-size: 35px;
+            font-family: 'Times New Roman';
+            color: #000;
+        }
+
+            header .header-logo h2 span {
+                color: #706233;
+            }
+
+    header .header-login {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+        header .header-login .fa-shopping-cart {
+            margin-right: 50px;
+        }
+
+        header .header-login i {
+            padding: 10px;
+            cursor: pointer;
+            font-size: 25px;
+            border-radius: 50%;
+        }
+
+
+.login {
+    height: calc(100% - 80px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 0 0;
+}
+
+.login-page {
+    height: 90%;
+    width: 600px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #FAE7C9;
+    perspective: 1000px;
+    position: relative;
+}
+
+.inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flipped .inner {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-page .front .head {
+    height: 170px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .login-page .front .head h2 {
+        font-size: 90px;
+        font-family: 'Times New Roman';
+        font-weight: bold;
+    }
+
+        .login-page .front .head h2 span {
+            color: #706233;
+        }
+
+.front .form {
+    height: calc(100% - 170px);
+    width: 100%;
+}
+
+    .front .form .login-inputs {
+        height: 280px;
+        width: 100%;
+        padding: 50px 50px 10px 50px;
+    }
+
+        .front .form .login-inputs .inputs {
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            margin: 20px auto;
+            border-color: transparent;
+            border-radius: 10px;
+            width: 100%;
+            height: 50px;
+            padding: 10px 20px;
+        }
+
+        .front .form .login-inputs button {
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #3D351E;
+            color: #fff;
+            border-color: transparent;
+            transition: 0.3s all ease;
+            cursor: pointer;
+            font-size: 20px;
+            font-family: 'Times New Roman';
+            letter-spacing: 1px;
+        }
+
+            .front .form .login-inputs button:hover {
+                background-color: #706233;
+            }
+
+    .front .form .login-links {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 50px;
+    }
+
+        .front .form .login-links a {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+            .front .form .login-links a:hover {
+                border-bottom: 1px solid purple;
+            }
+
+        .front .form .login-links input {
+            margin-right: 10px;
+        }
+
+
+    .front .form .login-sign {
+        height: calc(100% - 320px);
+        width: 100%;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        padding: 50px;
+    }
+
+        .front .form .login-sign span {
+            margin-right: 10px;
+            font-size: 20px;
+            font-family: 'Times New Roman';
+        }
+
+            .front .form .login-sign span a {
+                font-weight: bold;
+                font-family: 'Times New Roman';
+                padding: 5px;
+                transition: 0.5s all ease;
+            }
+
+                .front .form .login-sign span a:hover {
+                    border-bottom: 1px solid purple;
+                    transition: 0.5s all ease;
+                }
+
+
+/*SIGNIN*/
+
+.login-page .back .head {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+    .login-page .back .head h2 {
+        font-size: 60px;
+        font-family: 'Times New Roman';
+        font-weight: bold;
+    }
+
+        .login-page .back .head h2 span {
+            color: #706233;
+        }
+
+.back {
+    transform: rotateY(180deg);
+}
+
+    .back .form {
+        height: calc(100% - 80px);
+        width: 100%;
+    }
+
+        .back .form .login-inputs {
+            height: 380px;
+            padding: 20px 20px 0 20px;
+            width: 100%;
+        }
+
+            .back .form .login-inputs .inputs {
+                display: flex;
+                align-items: end;
+                justify-content: center;
+                margin: 10px 0;
+                border-color: transparent;
+                border-radius: 10px;
+                width: 100%;
+                height: 50px;
+                padding: 10px 20px;
+            }
+
+            .back .form .login-inputs span {
+                padding: 10px 5px;
+                font-size: 15px;
+                letter-spacing: 1px;
+            }
+
+input.chk-bx {
+    margin-right: 10px;
+}
+
+.back .form .login-inputs button:hover {
+    background-color: #706233;
+}
+
+.back .form .login-links {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    padding: 0 15px;
+    font-size: 15px;
+}
+
+    .back .form .login-links button {
+        width: 100%;
+        border-radius: 10px;
+        color: #fff;
+        transition: 0.3s all ease;
+        background-color: #3D351E;
+        border-color: transparent;
+        cursor: pointer;
+        font-size: 20px;
+        font-family: 'Times New Roman';
+        letter-spacing: 1px;
+    }
+
+        .back .form .login-links button:hover {
+            background-color: #706233;
+        }
+
+.back .form .login-sign {
+    height: calc(100% - 430px);
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding: 50px;
+}
+
+    .back .form .login-sign span {
+        margin-right: 10px;
+        font-size: 20px;
+        font-family: 'Times New Roman';
+    }
+
+        .back .form .login-sign span a {
+            font-weight: bold;
+            font-family: 'Times New Roman';
+            padding: 5px;
+            transition: 0.5s all ease;
+        }
+
+            .back .form .login-sign span a:hover {
+                border-bottom: 1px solid purple;
+                transition: 0.5s all ease;
+            }
