@@ -61,11 +61,18 @@ namespace BookHub_Group5.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            string googleLogoutUrl = "https://www.google.com/accounts/Logout?continue=https://accounts.google.com/Logout";
+            //string googleLogoutUrl = "https://www.google.com/accounts/Logout?continue=https://accounts.google.com/Logout";
 
-            return Redirect(googleLogoutUrl);
+            //return Redirect(googleLogoutUrl);
+
             //await HttpContext.SignOutAsync();
             //return View("Login");
+
+            string localLoginUrl = Url.Action("Login", "Account", null, Request.Scheme, Request.Host.Value);
+            string googleLogoutUrl = $"https://www.google.com/accounts/Logout?continue={Uri.EscapeDataString(localLoginUrl)}";
+
+            return Redirect(googleLogoutUrl); ;
         }
+
     }
 }
