@@ -11,11 +11,25 @@
 body {
     width: 100%;
     background-color: #fff;
+    overflow-y:auto;
 }
 
 #head {
     width: 100%;
     height: 100vh;
+    overflow-y:auto;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #706233;
+    border-radius: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 header {
@@ -107,6 +121,7 @@ header {
             cursor: pointer;
             font-size: 25px;
             border-radius: 50%;
+            color:#000;
         }
 
 .main {
@@ -411,7 +426,7 @@ header {
 footer {
     color: #fff;
     width: 100%;
-    background: #706233;
+    background: #000;
    
 }
 
@@ -571,7 +586,7 @@ footer {
 .bottom center {
     padding: 5px;
     font-size: 0.9375rem;
-    background: #3D351E;
+    background: #FAE7C9;
 }
 
     .bottom center span {
@@ -579,7 +594,7 @@ footer {
     }
 
     .bottom center a {
-        color: #fff;
+        color: #000;
         text-decoration: none;
     }
 
