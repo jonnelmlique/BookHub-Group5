@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using BookHub_Group5.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,8 @@ builder.Services.AddAuthentication(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BookHubDBContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("BookHubConnectionString")));
 
 var app = builder.Build();
 

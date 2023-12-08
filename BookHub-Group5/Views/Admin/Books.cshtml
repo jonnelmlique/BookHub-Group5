@@ -1,6 +1,9 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout/_AdminPage.cshtml";
 }
+@* @model BookHub_Group5.Models.Domain.books;
+ *@
+@model List<BookHub_Group5.Models.Domain.books>
 <link href="~/css/admin/books.css" rel="stylesheet" />
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -74,156 +77,33 @@
     </div>
     <div class="book-table">
         <table id="books">
-            <tr>
-                <th>Book Name</th>
-                <th>Author</th>
-                <th>Release Year</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>Si Langgam at Tipaklong</td>
-                <td>Lannggam</td>
-                <td>2010</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>Another Book</td>
-                <td>Author 2</td>
-                <td>2015</td>
-                <td>1200</td>
-            </tr>
-            <tr>
-                <td>Adventure Time</td>
-                <td>John Adventure</td>
-                <td>2018</td>
-                <td>1500</td>
-            </tr>
-            <tr>
-                <td>Mystery Mansion</td>
-                <td>Jane Mystery</td>
-                <td>2012</td>
-                <td>800</td>
-            </tr>
-            <tr>
-                <td>Sci-Fi Odyssey</td>
-                <td>Sam Sci-Fi</td>
-                <td>2020</td>
-                <td>2000</td>
-            </tr>
-            <tr>
-                <td>Romantic Sunset</td>
-                <td>Rachel Romance</td>
-                <td>2017</td>
-                <td>1800</td>
-            </tr>
-            <tr>
-                <td>Fantasy Dreams</td>
-                <td>Fred Fantasy</td>
-                <td>2013</td>
-                <td>1200</td>
-            </tr>
-            <tr>
-                <td>Historical Journey</td>
-                <td>Henry Historian</td>
-                <td>2011</td>
-                <td>900</td>
-            </tr>
-            <tr>
-                <td>Thriller Express</td>
-                <td>Tina Thriller</td>
-                <td>2019</td>
-                <td>1700</td>
-            </tr>
-            <tr>
-                <td>Comedy Chronicles</td>
-                <td>Chris Comedy</td>
-                <td>2016</td>
-                <td>1500</td>
-            </tr>
-            <tr>
-                <td>Drama Kingdom</td>
-                <td>Dave Drama</td>
-                <td>2014</td>
-                <td>1100</td>
-            </tr>
-            <tr>
-                <td>Sci-Fi Adventures</td>
-                <td>Susan Sci-Fi</td>
-                <td>2021</td>
-                <td>2200</td>
-            </tr>
-            <tr>
-                <td>Si Langgam at Tipaklong</td>
-                <td>Lannggam</td>
-                <td>2010</td>
-                <td>1000</td>
-            </tr>
-            <tr>
-                <td>Another Book</td>
-                <td>Author 2</td>
-                <td>2015</td>
-                <td>1200</td>
-            </tr>
-            <tr>
-                <td>Adventure Time</td>
-                <td>John Adventure</td>
-                <td>2018</td>
-                <td>1500</td>
-            </tr>
-            <tr>
-                <td>Mystery Mansion</td>
-                <td>Jane Mystery</td>
-                <td>2012</td>
-                <td>800</td>
-            </tr>
-            <tr>
-                <td>Sci-Fi Odyssey</td>
-                <td>Sam Sci-Fi</td>
-                <td>2020</td>
-                <td>2000</td>
-            </tr>
-            <tr>
-                <td>Romantic Sunset</td>
-                <td>Rachel Romance</td>
-                <td>2017</td>
-                <td>1800</td>
-            </tr>
-            <tr>
-                <td>Fantasy Dreams</td>
-                <td>Fred Fantasy</td>
-                <td>2013</td>
-                <td>1200</td>
-            </tr>
-            <tr>
-                <td>Historical Journey</td>
-                <td>Henry Historian</td>
-                <td>2011</td>
-                <td>900</td>
-            </tr>
-            <tr>
-                <td>Thriller Express</td>
-                <td>Tina Thriller</td>
-                <td>2019</td>
-                <td>1700</td>
-            </tr>
-            <tr>
-                <td>Comedy Chronicles</td>
-                <td>Chris Comedy</td>
-                <td>2016</td>
-                <td>1500</td>
-            </tr>
-            <tr>
-                <td>Drama Kingdom</td>
-                <td>Dave Drama</td>
-                <td>2014</td>
-                <td>1100</td>
-            </tr>
-            <tr>
-                <td>Sci-Fi Adventures</td>
-                <td>Susan Sci-Fi</td>
-                <td>2021</td>
-                <td>2200</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Publication Year</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th> </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var books in Model)
+                {
+                    <tr>
+                        <td>@books.booktitle</td>
+                        <td>@books.author</td>
+                        <td>@books.publicationyear</td>
+                        <td>@books.genre</td>
+                        <td>@books.price</td>
+                        <td><a asp-controller="Admin" asp-action="View" asp-route-bookid="@books.bookid">View</a></td>
+
+                    </tr>
+                    
+                }
+              
+            </tbody>
         </table>
     </div>
 
