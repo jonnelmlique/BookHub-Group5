@@ -375,3 +375,28 @@ input.chk-bx {
                 border-bottom: 1px solid purple;
                 transition: 0.5s all ease;
             }
+
+.button {
+    /*             display: inline-block;
+ */
+    width: 50%;
+    height: 50px;
+    letter-spacing: 1px;
+    display: inherit;
+    padding: 10px 20px;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #3D351E;
+    color: #ffffff;
+    margin: 5px;
+}
+
+.google-logo {
+    margin-right: 10px;
+}
+
+.google-signin:hover {
+    background-color: #706233;
+}

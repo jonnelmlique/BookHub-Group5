@@ -9,7 +9,7 @@
     @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
     <link href="~/css/account/login.css" rel="stylesheet" />
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-
+ 
 </head>
 <body>
     <section id="head">
@@ -49,9 +49,17 @@
                                 <input type="text" placeholder="Enter your Username" class="inputs" />
                                 <input type="text" placeholder="Enter your Password" class="inputs" />
                                 <button> LOGIN </button>
-                                @Html.ActionLink("Admin", "Dashboard", "Admin", null, new { @class = "btn btn-primary" })
+@*                                 <a asp-controller="Account" asp-action="Account" class="google class button" form-control">Sign-In with Google</a>
+ *@
+
+                                <a asp-controller="Account" asp-action="Account" asp-route-provider="Google" class="button google-signin">
+                                    <i class="fab fa-google google-logo"></i>
+                                    LOG-IN WITH GOOGLE
+                                </a>
+
+                                @* @Html.ActionLink("Admin", "Dashboard", "Admin", null, new { @class = "btn btn-primary" })
                                 <br />
-                                @Html.ActionLink("Customer", "Library", "User", null, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Customer", "Library", "User", null, new { @class = "btn btn-primary" }) *@
 
                             </div>
                             <div class="login-links">
@@ -81,8 +89,11 @@
 
                             </div>
                             <div class="login-links">
-                                <button> SIGN IN </button>
-
+                                <button> SIGN UP </button>
+                                <a asp-controller="Account" asp-action="Account" asp-route-provider="Google" class="button google-signin">
+                                    <i class="fab fa-google google-logo"></i>
+                                    SIGN-UP WITH GOOGLE
+                                </a>
                             </div>
                             <div class="login-sign">
                                 <span>Already have an account? <a href="#" onclick="flipCard()">LOGIN</a></span>

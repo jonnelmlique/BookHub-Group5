@@ -28,3 +28,6 @@ C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Deb
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Debug\net7.0\BookHub-Group5.pdb
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Debug\net7.0\BookHub-Group5.genruntimeconfig.cache
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Debug\net7.0\ref\BookHub-Group5.dll
+C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Debug\net7.0\BookHub-Group5.csproj.AssemblyReference.cache
+C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\obj\Debug\net7.0\BookHub-Group5.csproj.CopyComplete
