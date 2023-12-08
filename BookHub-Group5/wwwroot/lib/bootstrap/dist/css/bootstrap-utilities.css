@@ -4,7 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-.clearfix::after {
+/*.clearfix::after {
   display: block;
   clear: both;
   content: "";
@@ -1283,16 +1283,16 @@
 
 .text-nowrap {
   white-space: nowrap !important;
-}
+}*/
 
 /* rtl:begin:remove */
-.text-break {
+/*.text-break {
   word-wrap: break-word !important;
   word-break: break-word !important;
-}
+}*/
 
 /* rtl:end:remove */
-.text-primary {
+/*.text-primary {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
 }
@@ -4861,6 +4861,6 @@
   .d-print-none {
     display: none !important;
   }
-}
+}*/
 
 /*# sourceMappingURL=bootstrap-utilities.css.map */

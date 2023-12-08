@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mqse6RvLxzUzHhynQ68qTgx3fV/0EhJcD9oCdD3uYdo7O90/3DxblYSzuJaskAulDMPuazm2HXpRuVrP0cv/Cw==",
+  "dgSpecHash": "DkoflhdlBKTeIIePyAuXXmX+JSlerkr/LGJrkZvVf+yMy+iGLmHK7k2jI/mVGufWGumpgKtjI8Zd7NjXi37LWQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\BookHub-Group5.csproj",
+  "projectFilePath": "F:\\Users\\Gervic\\Documents\\BOOKHUB\\BookHub-Group5\\BookHub-Group5\\BookHub-Group5.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jonne\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\7.0.14\\microsoft.aspnetcore.authentication.google.7.0.14.nupkg.sha512"
+    "C:\\Users\\Gervic\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\7.0.14\\microsoft.aspnetcore.authentication.google.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

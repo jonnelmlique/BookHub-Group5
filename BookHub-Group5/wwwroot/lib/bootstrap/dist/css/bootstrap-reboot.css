@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
  */
-*,
+/**,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -194,7 +194,7 @@ kbd,
 samp {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em;
-  direction: ltr /* rtl:ignore */;
+  direction: ltr*/ /* rtl:ignore *//*;
   unicode-bidi: bidi-override;
 }
 
@@ -376,7 +376,7 @@ legend + * {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
-}
+}*/
 
 /* rtl:raw:
 [type="tel"],
@@ -386,7 +386,7 @@ legend + * {
   direction: ltr;
 }
 */
-::-webkit-search-decoration {
+/*::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -422,6 +422,6 @@ progress {
 
 [hidden] {
   display: none !important;
-}
+}*/
 
 /*# sourceMappingURL=bootstrap-reboot.css.map */

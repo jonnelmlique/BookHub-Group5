@@ -3,6 +3,62 @@
 }
 <link href="~/css/admin/books.css" rel="stylesheet" />
 
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="book-body">                   
+                        <div class="image-file">
+                            <img src="" class="add-img" />
+                            <input type="file" id="myFile" name="filename" class="file-upload">
+                        </div>
+                 
+                            <div class="information">
+                              @*   <label class="info-lbl">Name of Book :</label> *@
+                                <input type="text" class="info-txt" placeholder="Name of the Book" />
+                            </div>
+                            <div class="information">
+                              @*   <label class="info-lbl">Book Author :</label> *@
+                              <input type="text" class="info-txt" placeholder="Book Author" />
+                            </div>
+                            <div class="information">
+                                @* <label class="info-lbl">Book Price :</label> *@
+                               <input type="text" class="info-txt" placeholder=" Book Price" />
+                            </div>
+                 
+                   
+                        <div class="information">
+                           @*  <label class="info-lbl">Category :</label> *@
+                              <input type="text" class="info-txt" placeholder="Category" />
+                        </div>
+                        <div class="information">
+                           @*  <label class="info-lbl">Genre :</label> *@
+                          <input type="text" class="info-txt" placeholder="Genre" />
+                        </div>
+                        <div class="information">
+                         @*    <label class="info-lbl">Release Year :</label> *@
+                              <input type="text" class="info-txt" placeholder="Release year" />
+                        </div>
+                        <div class="information desc">
+                           @*  <label class="info-lbl desc-lbl">Description :</label> *@
+                        <textarea class="info-txt " rows="5" placeholder="Description"></textarea>
+                        </div>
+                    
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-book">Add Book</button>
+                <button type="button" class="btn btn-default btn-book" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="books">
     <div class="search-book">
         <div class="search-bar">
@@ -10,9 +66,10 @@
             <i class="fas fa-search"></i>
         </div>
         <div class="buttons">
-            <button class="btn-book"><a href="@Url.Action("addBooks", "Admin")"><i class='bx bxs-book-heart'></i>Add Books</a></button>
-            <button class="btn-book"><a href="#"><i class="fas fa-edit"></i>Edit Books</a></button>
-            <button class="btn-book"><a href="#"><i class="fas fa-trash"></i>Delete Books</a></button>
+           @*  <button class="btn-book"><a href="@Url.Action("addBooks", "Admin")"><i class='bx bxs-book-heart'></i>Add Books</a></button> *@
+            <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>Add Books</a></button>
+            <button class=" btn btn-info btn-lg btn-book"><a href ="@Url.Action("addBooks", "Admin")"><i class="fas fa-edit"></i>Edit Books</a></button>
+            <button class=" btn btn-info btn-lg btn-book"><a href="#"><i class="fas fa-trash"></i>Delete Books</a></button>
         </div>
     </div>
     <div class="book-table">
@@ -171,3 +228,4 @@
     </div>
 
 </div>
+

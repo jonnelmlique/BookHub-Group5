@@ -22,13 +22,7 @@
         </div>
         <div class="profile-image">
             <img src="~/Images/main-logo.png" alt="profile" class="image" />
-         @*    @if (Context.User.Identity.IsAuthenticated)
-            {
-
-
-                <label class="profile-text">@User.Identity.emailaddress</label>
-            }
-        </div> *@
+      
             @if (Context.User.Identity.IsAuthenticated)
             {
                 var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
