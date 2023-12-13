@@ -110,6 +110,11 @@ namespace BookHub_Group5.Controllers
                     var base64CoverImage = Convert.ToBase64String(viewModel.coverimage);
                     viewModel.CoverImageBase64 = $"data:image/png;base64,{base64CoverImage}";
                 }
+                
+                if (viewModel.bookfile != null)
+        {
+            viewModel.BookFileBase64 = Convert.ToBase64String(viewModel.bookfile);
+        }
 
                 return View(viewModel);
 

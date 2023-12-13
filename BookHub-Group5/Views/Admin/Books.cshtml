@@ -1,9 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout/_AdminPage.cshtml";
 }
-@* @model BookHub_Group5.Models.Domain.books;
- *@
 @model List<BookHub_Group5.Models.Domain.books>
+
 <link href="~/css/admin/books.css" rel="stylesheet" />
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -49,19 +48,15 @@
                            @*  <label class="info-lbl desc-lbl">Description :</label> *@
                         <textarea class="info-txt " rows="5" placeholder="Description"></textarea>
                         </div>
-                    
-                  
-                </div>
+                                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-book">Add Book</button>
                 <button type="button" class="btn btn-default btn-book" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
-
 <div class="books">
     <div class="search-book">
         <div class="search-bar">
@@ -69,11 +64,11 @@
             <i class="fas fa-search"></i>
         </div>
         <div class="buttons">
-           @*  <button class="btn-book"><a href="@Url.Action("addBooks", "Admin")"><i class='bx bxs-book-heart'></i>Add Books</a></button> *@
-            <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>Add Books</a></button>
-            <button class=" btn btn-info btn-lg btn-book"><a href ="@Url.Action("addBooks", "Admin")"><i class="fas fa-edit"></i>Edit Books</a></button>
-            <button class=" btn btn-info btn-lg btn-book"><a href="#"><i class="fas fa-trash"></i>Delete Books</a></button>
-        </div>
+            <button class="btn-book"><a href="@Url.Action("addBooks", "Admin")"><i class='bx bxs-book-heart'></i>Add Books</a></button> 
+@*             <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>Add Books</a></button>
+ *@        <button class=" btn btn-info btn-lg btn-book"><a href ="@Url.Action("addBooks", "Admin")"><i class="fas fa-edit"></i>Edit Books</a></button>
+@*             <button class=" btn btn-info btn-lg btn-book"><a href="#"><i class="fas fa-trash"></i>Delete Books</a></button>
+ *@        </div>
     </div>
     <div class="book-table">
         <table id="books">
@@ -97,12 +92,9 @@
                         <td>@books.publicationyear</td>
                         <td>@books.genre</td>
                         <td>@books.price</td>
-                        <td><a asp-controller="Admin" asp-action="View" asp-route-bookid="@books.bookid">View</a></td>
-
+                        <td><a asp-controller="Admin" asp-action="View" asp-route-bookid="@books.bookid">Edit</a></td>
                     </tr>
-                    
                 }
-              
             </tbody>
         </table>
     </div>

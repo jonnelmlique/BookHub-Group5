@@ -66,14 +66,53 @@
                     <!-- Input for Book File -->
                     <label class="info-lbl">Book File :</label>
                     <input type="file" name="BookFile" class="file-upload" />
+                  
                 </div>
+
                 <div class="book-buttons">
-                    <button type="submit" class="book-btn">Add Book</button>
-                    <button class="book-btn">Cancel</button>
+                    <button type="submit" class="book-btn">Update Book</button>
+                    @if (!string.IsNullOrEmpty(Model.BookFileBase64))
+                    {
+                        <a href="data:application/pdf;base64,@Model.BookFileBase64" download="BookFile.pdf">Download Books</a>
+                    }
+                    <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>View Books</a></button>
+                   
+                    <a href="@Url.Action("Books", "Admin")">Cancel</a>
+              
+
+
+@*                     <button class="book-btn">Cancel</button>
+ *@                </div>
+            </div>
+
+         
+        </div>
+     
+    </form>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    @if (!string.IsNullOrEmpty(Model.BookFileBase64))
+                    {
+                        <embed src="data:application/pdf;base64,@Model.BookFileBase64" width="100%" height="600px" />
+
+                    }
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-book" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
-    </form>
+    </div>
     <script>
         function previewImage(input) {
             var preview = document.getElementById('coverImagePreview');

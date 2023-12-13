@@ -65,13 +65,13 @@ namespace BookHub_Group5.Controllers
 
             //return Redirect(googleLogoutUrl);
 
-            //await HttpContext.SignOutAsync();
-            //return View("Login");
+            await HttpContext.SignOutAsync();
+            return View("Login");
 
-            string localLoginUrl = Url.Action("Login", "Account", null, Request.Scheme, Request.Host.Value);
-            string googleLogoutUrl = $"https://www.google.com/accounts/Logout?continue={Uri.EscapeDataString(localLoginUrl)}";
+            //string localLoginUrl = Url.Action("Login", "Account", null, Request.Scheme, Request.Host.Value);
+            //string googleLogoutUrl = $"https://www.google.com/accounts/Logout?continue={Uri.EscapeDataString(localLoginUrl)}";
 
-            return Redirect(googleLogoutUrl); ;
+            //return Redirect(googleLogoutUrl); ;
         }
 
     }

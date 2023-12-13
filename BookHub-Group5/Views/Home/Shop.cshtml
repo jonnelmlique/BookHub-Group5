@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "BookHub - Ebook Online Shop";
 }
+@model List<BookHub_Group5.Models.Domain.books>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,13 +73,78 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="main-content">
                 <div class="search">
                    <input type="text" class="search-txt" />
                     <i class="fas fa-search"></i>
                 </div>
-             <div class="book-list">
+
+                <div class="book-list">
+                    @foreach (var books in Model)
+                    {
+                        <div class="book-card">
+                            <div class="book-image">
+                                @if (books.coverimage != null)
+                                {
+                                    var base64CoverImage = Convert.ToBase64String(books.coverimage);
+                                    <img src="data:image/png;base64,@base64CoverImage" alt="@books.booktitle" />
+                                }
+                                else
+                                {
+                                    <p>No Cover Image</p>
+                                }
+                            </div>
+                            <div class="book-details">
+                                <div class="title">
+                                    <h2>@books.booktitle</h2>
+                                </div>
+                                <div class="author">
+                                    <p>Author: @books.author</p>
+                                </div>
+                                @* <div class="publication-year">
+                                    <p>Publication Year: @books.publicationyear</p>
+                                </div> *@
+                                <div class="genre">
+                                    <p>Genre: @books.genre</p>
+                                </div>
+                                <div class="price">
+                                    <p>₱@books.price</p>
+                                </div>
+                                <div class="btn">
+                                    <button>Read Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+            @*  <div class="book-list">
                     <div class="book-card">
+                        <div class="book-image">
+                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
+                        </div>
+                        <div class="book-details">
+                            <div class="title">
+                                <h2>ONE PIECE</h2>
+                            </div>
+                            <div class="category">
+                                <h3> ANIME </h3>
+                            </div>
+                            <div class="genre">
+                                <h3> ACTION, FANTASY</h3>
+                            </div>
+                            <div class="btn">
+                                <button>Read Now</button>
+                            </div>
+                        </div>
+                    </div> *@
+
+
+                    @* <div class="book-card">
                         <div class="book-image">
                             <img src="~/Images/SHAN.jpg" alt="BOOK" />
                         </div>
@@ -190,26 +257,7 @@
                                 <button>Read Now</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
+                    </div> *@
              </div>
     
         </div>
