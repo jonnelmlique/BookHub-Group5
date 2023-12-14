@@ -25,10 +25,6 @@ namespace BookHub_Group5.Controllers
         {
             return View();
         }
-        //public IActionResult Books()
-        //{
-        //    return View();
-        //}
         public IActionResult AddBooks()
         {
             return View();
@@ -42,32 +38,44 @@ namespace BookHub_Group5.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Add(AddBooksViewModel addBooksRequest)
         {
             if (ModelState.IsValid)
             {
-                var book = new books
+                try
                 {
-                    booktitle = addBooksRequest.booktitle,
-                    author = addBooksRequest.author,
-                    genre = addBooksRequest.genre,
-                    publicationyear = addBooksRequest.publicationYear,
-                    description = addBooksRequest.description,
-                    coverimage = await ConvertFormFileToByteArray(addBooksRequest.CoverImage),
-                    bookfile = await ConvertFormFileToByteArray(addBooksRequest.BookFile),
-                    price = addBooksRequest.price
-                };
+                    var book = new books
+                    {
+                        booktitle = addBooksRequest.booktitle,
+                        author = addBooksRequest.author,
+                        genre = addBooksRequest.genre,
+                        publicationyear = addBooksRequest.publicationYear,
+                        description = addBooksRequest.description,
+                        coverimage = await ConvertFormFileToByteArray(addBooksRequest.CoverImage),
+                        bookfile = await ConvertFormFileToByteArray(addBooksRequest.BookFile),
+                        price = addBooksRequest.price
+                    };
 
-                await bookHubDBContext.books.AddAsync(book);
-                await bookHubDBContext.SaveChangesAsync();
+                    await bookHubDBContext.books.AddAsync(book);
+                    await bookHubDBContext.SaveChangesAsync();
 
-                return RedirectToAction("AddBooks", "Admin");
+                    TempData["SuccessMessage"] = "Book added successfully.";
+
+                    return RedirectToAction("AddBooks", "Admin");
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "An error occurred while adding the book.";
+                    return RedirectToAction("AddBooks", "Admin");
+
+                }
             }
 
-            // If the model state is not valid, return to the view with validation errors
-            return View(addBooksRequest);
+            TempData["ErrorMessage"] = "An error occurred while adding the book.";
+
+            return RedirectToAction("AddBooks", "Admin");
+
         }
 
         private async Task<byte[]> ConvertFormFileToByteArray(IFormFile file)
@@ -83,8 +91,50 @@ namespace BookHub_Group5.Controllers
                 return memoryStream.ToArray();
             }
         }
+    
 
-        [HttpGet]
+    //[HttpPost]
+    //public async Task<IActionResult> Add(AddBooksViewModel addBooksRequest)
+    //{
+    //    if (ModelState.IsValid)
+    //    {
+    //        var book = new books
+    //        {
+    //            booktitle = addBooksRequest.booktitle,
+    //            author = addBooksRequest.author,
+    //            genre = addBooksRequest.genre,
+    //            publicationyear = addBooksRequest.publicationYear,
+    //            description = addBooksRequest.description,
+    //            coverimage = await ConvertFormFileToByteArray(addBooksRequest.CoverImage),
+    //            bookfile = await ConvertFormFileToByteArray(addBooksRequest.BookFile),
+    //            price = addBooksRequest.price
+    //        };
+
+    //        await bookHubDBContext.books.AddAsync(book);
+    //        await bookHubDBContext.SaveChangesAsync();
+
+    //        return RedirectToAction("AddBooks", "Admin");
+    //    }
+
+    //    // If the model state is not valid, return to the view with validation errors
+    //    return View(addBooksRequest);
+    //}
+
+    //private async Task<byte[]> ConvertFormFileToByteArray(IFormFile file)
+    //{
+    //    if (file == null)
+    //    {
+    //        return null;
+    //    }
+
+    //    using (var memoryStream = new MemoryStream())
+    //    {
+    //        await file.CopyToAsync(memoryStream);
+    //        return memoryStream.ToArray();
+    //    }
+    //}
+
+    [HttpGet]
         public async Task<IActionResult> View(int bookid)
         {
           var books = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
@@ -99,8 +149,6 @@ namespace BookHub_Group5.Controllers
                     genre = books.genre,
                     publicationyear = books.publicationyear,
                     description = books.description,
-                    //coverimage = await ConvertFormFileToByteArray(books.coverimage),
-                    //bookfile = await ConvertFormFileToByteArray(books.bookfile),
                     coverimage = books.coverimage, 
                     bookfile = books.bookfile,
                     price = books.price

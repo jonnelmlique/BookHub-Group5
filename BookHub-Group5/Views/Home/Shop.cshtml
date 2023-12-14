@@ -73,15 +73,11 @@
                 </div>
             </div>
         </div>
-
-
-
         <div class="main-content">
                 <div class="search">
                    <input type="text" class="search-txt" />
                     <i class="fas fa-search"></i>
                 </div>
-
                 <div class="book-list">
                     @foreach (var books in Model)
                     {
@@ -104,9 +100,7 @@
                                 <div class="author">
                                     <p>Author: @books.author</p>
                                 </div>
-                                @* <div class="publication-year">
-                                    <p>Publication Year: @books.publicationyear</p>
-                                </div> *@
+                             
                                 <div class="genre">
                                     <p>Genre: @books.genre</p>
                                 </div>
@@ -114,8 +108,8 @@
                                     <p>₱@books.price</p>
                                 </div>
                                 <div class="btn">
-                                    <button>Read Now</button>
-                                </div>
+                                    <a asp-controller="Home" asp-action="BookDetails" asp-route-bookid="@books.bookid">View</a>
+</div>
                             </div>
                         </div>
                     }

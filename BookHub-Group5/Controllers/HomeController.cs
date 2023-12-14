@@ -22,26 +22,16 @@ namespace BookHub_Group5.Controllers
             var books = await bookHubDBContext.books.ToListAsync();
             return View(books);
         }
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        
         public async Task<IActionResult> Index()
         {
             var books = await bookHubDBContext.books.ToListAsync();
             return View(books);
         }
-
-
         public IActionResult Privacy()
         {
             return View();
         }
-        //public IActionResult Shop()
-        //{
-        //    return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -77,10 +67,46 @@ namespace BookHub_Group5.Controllers
                 return View(viewModel);
             }
 
-            return RedirectToAction("Books");
+            return RedirectToAction("Shop");
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> BookDetails(int bookid)
+        {
+            var books = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
+
+            if (books != null)
+            {
+                var bookDetailsViewModel = new BookDetailsViewModel()
+                {
+                    bookid = books.bookid,
+                    booktitle = books.booktitle,
+                    author = books.author,
+                    genre = books.genre,
+                    publicationyear = books.publicationyear,
+                    description = books.description,
+                    coverimage = books.coverimage,
+                    bookfile = books.bookfile,
+                    price = books.price
+                };
+                if (bookDetailsViewModel.coverimage != null)
+                {
+                    var base64CoverImage = Convert.ToBase64String(bookDetailsViewModel.coverimage);
+                    bookDetailsViewModel.CoverImageBase64 = $"data:image/png;base64,{base64CoverImage}";
+                }
+
+                if (bookDetailsViewModel.bookfile != null)
+                {
+                    bookDetailsViewModel.BookFileBase64 = Convert.ToBase64String(bookDetailsViewModel.bookfile);
+                }
+
+                return View(bookDetailsViewModel);
+
+            }
+            return RedirectToAction("Shop");
+            //if (books == null)
+        }
 
 
     }

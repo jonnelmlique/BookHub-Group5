@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "80Go9+s7muF/wRnZtGI3Feq/A8vlTB+44RYrsTGu63M=",
+  "Hash": "qagOGZogF9aZGWK+ApZ8CoAoZ8qr4H5DDFyqV3HAn1E=",
   "Source": "BookHub-Group5",
   "BasePath": "_content/BookHub-Group5",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Admin\\Sales.css"
+    },
+    {
+      "Identity": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\BookDetails.css",
+      "SourceId": "BookHub-Group5",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\",
+      "BasePath": "_content/BookHub-Group5",
+      "RelativePath": "css/Index/BookDetails.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Index\\BookDetails.css"
     },
     {
       "Identity": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\Home.css",

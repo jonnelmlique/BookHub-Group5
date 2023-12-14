@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "BookDetails";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Book Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link href="~/css/index/shop.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href="~/css/index/swiper-bundle.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="~/css/index/BookDetails.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<section id="head">
+    <header>
+        <div class="header-logo">
+            <img src="~/Images/Book Hub Favicon.png" alt="LOGO">
+            <h2>Book<span>HuB</span></h2>
+        </div>
+        <div class="header-nav">
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
+                    <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
+                    <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-login">
+            <i class="fas fa-search"></i>
+            <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+        <div class="container mt-5">
+            <div class="card">
+                <img src="@Model.CoverImageBase64" class="card-img-top img-fluid" alt="@Model.booktitle" style="max-height: 300px;" />
+                <div class="card-body">
+                    <h5 class="card-title">@Model.booktitle</h5>
+                    <p class="card-text">@Model.description</p>
+                    <p class="card-text"><strong>Author:</strong> @Model.author</p>
+                    <p class="card-text"><strong>Price:</strong> ₱@Model.price</p>
+                    <button class="btn btn-primary btn-lg" onclick="buyBook('@Model.bookid')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            function buyBook(bookId) {
+                alert('Thank you for buying the book with ID ' + bookId + '!');
+            }
+        </script>
+
+    </section>
+</body>
+</html>
+

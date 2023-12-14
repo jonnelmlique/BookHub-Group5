@@ -2,4 +2,38 @@
     Layout = "~/Views/Shared/Layout/_UserPage.cshtml";
 }
 
-<h2> USER ACCOUNT</h2>
+@* <h2> USER ACCOUNT</h2>
+ *@
+@{
+    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+    var userNameClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name");
+    var userIdClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+}
+
+@if (Context.User.Identity.IsAuthenticated)
+{
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">User Profile</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="txtUserId">User ID:</label>
+                    <input type="text" id="txtUserId" class="form-control" value="@userIdClaim?.Value" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="txtName">Name:</label>
+                    <input type="text" id="txtName" class="form-control" value="@userNameClaim?.Value" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail">Email:</label>
+                    <input type="text" id="txtEmail" class="form-control" value="@userEmailClaim?.Value" disabled />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+

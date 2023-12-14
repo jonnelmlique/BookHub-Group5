@@ -14,9 +14,6 @@
         <div class="book-body">
             <div class="book-image">
                 <div class="image-file">
-                    <!-- Input for Cover Image -->
- @*                        <img src="" class="add-img"  />
-                        <input type="file" name="CoverImage" class="file-upload" /> *@
                     <img id="coverImagePreview" src="" class="add-img" />
                     <input type="file" name="CoverImage" class="file-upload" onchange="previewImage(this)" />
                 </div>
@@ -30,25 +27,18 @@
                         <input type="text" class="info-txt" asp-for="author" />
                     </div>
                     <div class="information">
-                        <!-- Input for Book Price -->
                         <label class="info-lbl">Book Price :</label>
                         <input type="text" class="info-txt" asp-for="price" />
                     </div>
                 </div>
             </div>
             <div class="book-details">
-             @*    <div class="information">
-                    <!-- Input for Category -->
-                    <label class="info-lbl">Category :</label>
-                    <input type="text" class="info-txt" asp-for="genre" />
-                </div> *@
+           
                 <div class="information">
-                    <!-- Input for Genre -->
                     <label class="info-lbl">Genre :</label>
                     <input type="text" class="info-txt" asp-for="genre" />
                 </div>
                 <div class="information">
-                    <!-- Input for Release Year -->
                     <label class="info-lbl">Release Year :</label>
                     <input type="text" class="info-txt" asp-for="publicationYear" />
                 </div>
@@ -57,13 +47,14 @@
                     <textarea class="info-txt" rows="5" asp-for="description"></textarea>
                 </div>
                 <div class="information">
-                    <!-- Input for Book File -->
                     <label class="info-lbl">Book File :</label>
                     <input type="file" name="BookFile" class="file-upload" />
                 </div>
                 <div class="book-buttons">
                     <button type="submit" class="book-btn">Add Book</button>
-                    <button class="book-btn">Cancel</button>
+@*                     <button class="book-btn">Cancel</button>
+ *@
+                    <a asp-action="Books" asp-controller="Admin" class="book-btn">Cancel</a>
                 </div>
             </div>
         </div>
@@ -85,61 +76,25 @@
             }
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-   @*  <form method="post" asp-controller="User" asp-action="Add">
-        <div class="book-body">
-            <div class="book-image">
+    <script>
+        var successMessage = "@TempData["SuccessMessage"]";
+        if (successMessage) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: successMessage,
+            });
+        }
 
-                <div class="image-file">
-                    <img src="" class="add-img" />
-                    <input type="file" id="myFile" name="filename" class="file-upload">
-                </div>
-                <div class="image-info">
-
-
-                    <div class="information">
-                        <label class="info-lbl">Name of Book :</label>
-                        <input type="text" class="info-txt" asp-for="booktitle" />
-                    </div>
-                    <div class="information">
-                        <label class="info-lbl">Book Author :</label>
-                        <input type="text" class="info-txt" asp-for="author" />
-                    </div>
-                    <div class="information">
-                        <label class="info-lbl">Book Price :</label>
-                        <input type="text" class="info-txt" />
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="book-details">
-                <div class="information">
-                    <label class="info-lbl">Category :</label>
-                    <input type="text" class="info-txt" asp-for="genre" />
-                </div>
-                <div class="information">
-                    <label class="info-lbl">Genre :</label>
-                    <input type="text" class="info-txt" />
-                </div>
-                <div class="information">
-                    <label class="info-lbl">Release Year :</label>
-                    <input type="text" class="info-txt" asp-for="publicationYear" />
-                </div>
-                <div class="information desc">
-                    <label class="info-lbl desc-lbl">Description :</label>
-                    <textarea class="info-txt " rows="5" asp-for="description"></textarea>
-                </div>
-                <div class="book-buttons">
-                    <button type="submit" class="book-btn">Add Book</button>
-                    <button class="book-btn">Cancel</button>
-                </div>
-
-
-            </div>
-
-
-        </div>
-    </form>
-</div>               *@
-
+        var errorMessage = "@TempData["ErrorMessage"]";
+        if (errorMessage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorMessage,
+            });
+        }
+    </script>
