@@ -26,6 +26,8 @@ namespace BookHub_Group5.Controllers
         public async Task<IActionResult> Index()
         {
             var books = await bookHubDBContext.books.ToListAsync();
+
+
             return View(books);
         }
         public IActionResult Privacy()

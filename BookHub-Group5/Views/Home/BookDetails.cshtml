@@ -37,11 +37,30 @@
                 </ul>
             </nav>
         </div>
-        <div class="header-login">
-            <i class="fas fa-search"></i>
-            <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
-            <i class="fas fa-shopping-cart"></i>
-        </div>
+            <div class="header-login">
+                <i class="fas fa-search"></i>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                    if (userEmailClaim != null)
+                    {
+                        <a href="@Url.Action("Library", "User")"><i class="fas fa-user"></i></a>
+                        <label class="profile-text">@userEmailClaim.Value</label>
+
+                    }
+                    else
+                    {
+                        <label class="profile-text">Email not found</label>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+                }
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+
     </header>
 
         <div class="container mt-5">
