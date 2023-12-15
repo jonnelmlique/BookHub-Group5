@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout/_UserPage.cshtml";
 }
+@model List<BookHub_Group5.Models.Domain.sales>
 
 <link href="~/css/user/library.css" rel="stylesheet" />
 
@@ -24,160 +25,196 @@
             </div>
         </div>
     </div>
+
+
     <div class="book-list">
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
+        @foreach (var sales in Model)
+        {
+            <div class="book-card">
+                <div class="book-image">
+                    @if (sales.CoverImage != null)
+                    {
+                        var base64CoverImage = Convert.ToBase64String(sales.CoverImage);
+                        <img src="data:image/png;base64,@base64CoverImage" alt="@sales.BookTitle" />
+                    }
+                    else
+                    {
+                        <p>No Cover Image</p>
+                    }
                 </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
+                <div class="book-details">
+                    <div class="title">
+                        <h2>@sales.BookTitle</h2>
+                    </div>
+                    <div class="author">
+                        <p>Author: @sales.Author</p>
+                    </div>
+
+                    <div class="genre">
+                        <p>Genre: @sales.Genre</p>
+                    </div>
+                   
+                    <div class="btn">
+                        <a asp-controller="Home" asp-action="BookDetails" asp-route-bookid="@sales.BookId">View</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="book-card">
-            <div class="book-image">
-                <img src="~/Images/SHAN.jpg" alt="BOOK" />
-            </div>
-            <div class="book-details">
-                <div class="title">
-                    <h2>ONE PIECE</h2>
-                </div>
-                <div class="category">
-                    <h3> ANIME </h3>
-                </div>
-                <div class="genre">
-                    <h3> ACTION, FANTASY</h3>
-                </div>
-                <div class="btn">
-                    <button>Read Now</button>
-                </div>
-            </div>
-        </div>
+        }
     </div>
+  @*   <div class="book-list">
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="book-card">
+            <div class="book-image">
+                <img src="~/Images/SHAN.jpg" alt="BOOK" />
+            </div>
+            <div class="book-details">
+                <div class="title">
+                    <h2>ONE PIECE</h2>
+                </div>
+                <div class="category">
+                    <h3> ANIME </h3>
+                </div>
+                <div class="genre">
+                    <h3> ACTION, FANTASY</h3>
+                </div>
+                <div class="btn">
+                    <button>Read Now</button>
+                </div>
+            </div>
+        </div>
+    </div> *@
 </div>
 
 

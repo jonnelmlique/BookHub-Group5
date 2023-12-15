@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
 using BookHub_Group5.Models;
 using BookHub_Group5.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookHub_Group5.Controllers
 {
@@ -18,10 +19,28 @@ namespace BookHub_Group5.Controllers
         }
         [HttpGet]
 
-        public IActionResult Library()
+        //public async Task<IActionResult> Library()
+        //{
+        //    var sales = await bookHubDBContext.sales.ToListAsync();
+        //    return View(sales);
+        //}
+        public async Task<IActionResult> Library()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                var userEmailClaim = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                if (userEmailClaim != null)
+                {
+                    var userEmail = userEmailClaim.Value;
+                    var userSales = await bookHubDBContext.sales.Where(s => s.UserEmail == userEmail).ToListAsync();
+                    return View(userSales);
+                }
+            }
+
+            return View(new List<sales>());
         }
+
         public IActionResult Cart()
         {
             return View();
@@ -40,45 +59,3 @@ namespace BookHub_Group5.Controllers
         }
     }
 }
-//        [HttpPost]
-//        public async Task<IActionResult> Add(AddBooksViewModel addBooksRequest)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                var book = new books
-//                {
-//                    booktitle = addBooksRequest.booktitle,
-//                    author = addBooksRequest.author,
-//                    genre = addBooksRequest.genre,
-//                    publicationyear = addBooksRequest.publicationYear,
-//                    description = addBooksRequest.description,
-//                    coverimage = await ConvertFormFileToByteArray(addBooksRequest.CoverImage),
-//                    bookfile = await ConvertFormFileToByteArray(addBooksRequest.BookFile),
-//                    price = addBooksRequest.price
-//                };
-
-//                await bookHubDBContext.books.AddAsync(book);
-//                await bookHubDBContext.SaveChangesAsync();
-
-//                return RedirectToAction("AddBooks", "Admin");
-//            }
-
-//            // If the model state is not valid, return to the view with validation errors
-//            return View(addBooksRequest);
-//        }
-
-//        private async Task<byte[]> ConvertFormFileToByteArray(IFormFile file)
-//        {
-//            if (file == null)
-//            {
-//                return null;
-//            }
-
-//            using (var memoryStream = new MemoryStream())
-//            {
-//                await file.CopyToAsync(memoryStream);
-//                return memoryStream.ToArray();
-//            }
-//        }
-//    }
-//}

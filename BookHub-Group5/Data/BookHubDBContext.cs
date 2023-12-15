@@ -8,6 +8,8 @@ namespace BookHub_Group5.Data
         public BookHubDBContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<books> books { get; set; }         
+        public DbSet<books> books { get; set; }
+        public DbSet<sales> sales { get; set; }
+
     }
 }

@@ -286,3 +286,4 @@ C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Deb
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\bin\Debug\net7.0\PayPal.dll
