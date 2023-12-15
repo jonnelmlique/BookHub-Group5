@@ -35,9 +35,25 @@
                 </nav>
             </div>
             <div class="header-login">
-              
-               <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
-           
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                    if (userEmailClaim != null)
+                    {
+                        <a href="@Url.Action("Library", "User")"><i class="fas fa-user"></i></a>
+                        <label class="profile-text">@userEmailClaim.Value</label>
+
+                    }
+                    else
+                    {
+                        <label class="profile-text">Email not found</label>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+                }
             </div>
         </header>
         <div class="main">
@@ -98,188 +114,51 @@
                  <a href="#">VIEW MORE</a>
              </div>
           </div>
-       <div class="category-list">
-        <div class="slide-container swiper">
-            <div class="slide-content">
-                <div class="card-wrapper swiper-wrapper">
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <div class="card-image">
-                                <img src="~/Images/bg3.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                           <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="~/Images/bg4.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                          <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
+            <div class="category-list">
+
+                <div class="slide-container swiper">
+                    <div class="slide-content">
+                        <div class="card-wrapper swiper-wrapper">
+                            @foreach (var books in Model)
+                            {
+                                <div class="card swiper-slide">
+
+                                    <div class="image-content">
+
+                                        <div class="card-image">
+                                            @if (books.coverimage != null)
+                                            {
+                                                var base64CoverImage = Convert.ToBase64String(books.coverimage);
+                                                <img src="data:image/png;base64,@base64CoverImage" alt="@books.booktitle" />
+                                            }
+                                            else
+                                            {
+                                                <p>No Cover Image</p>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="title">
+                                            <h1>@books.booktitle</h1>
+                                        </div>
+                                        <div class="author">
+                                            <h3>@books.author</h3>
+                                        </div>
+                                        <div class="price">
+                                            <span>₱@books.price</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            }
                         </div>
                     </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="~/Images/bg4.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                           <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="~/Images/bg3.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                          <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <!--<img src="images/profile5.jpg" alt="" class="card-img">-->
-                            </div>
-                        </div>
-                        <div class="card-content">
-                           <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <!--<img src="images/profile6.jpg" alt="" class="card-img">-->
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <!--<img src="images/profile7.jpg" alt="" class="card-img">-->
-                            </div>
-                        </div>
-                        <div class="card-content">
-                          <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <!--<img src="images/profile8.jpg" alt="" class="card-img">-->
-                            </div>
-                        </div>
-                        <div class="card-content">
-                           <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="card swiper-slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <!--<img src="images/profile9.jpg" alt="" class="card-img">-->
-                            </div>
-                        </div>
-                        <div class="card-content">
-                           <div class="title">
-                               <h1>Return of the Mount Hua Sect</h1>
-                           </div>
-                           <div class="author">
-                               <h3>Mark Gervic Arca</h3>
-                           </div>
-                           <div class="price">
-                               <span>PRICE 200</span>
-                           </div>
-                        </div>
-                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
-            <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div>
-            <div class="swiper-pagination"></div>
         </div>
-       </div>
-     </div>
   </section>
   <section id="foot">
         <div class="footer">

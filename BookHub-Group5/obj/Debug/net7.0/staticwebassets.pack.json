@@ -73,12 +73,20 @@
       "PackagePath": "staticwebassets\\css\\Admin\\Sales.css"
     },
     {
+      "Id": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\About.css",
+      "PackagePath": "staticwebassets\\css\\Index\\About.css"
+    },
+    {
       "Id": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\BookDetails.css",
       "PackagePath": "staticwebassets\\css\\Index\\BookDetails.css"
     },
     {
       "Id": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\Home.css",
       "PackagePath": "staticwebassets\\css\\Index\\Home.css"
+    },
+    {
+      "Id": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\product.css",
+      "PackagePath": "staticwebassets\\css\\Index\\product.css"
     },
     {
       "Id": "C:\\Users\\jonne\\OneDrive\\Documents\\Projects\\BookHub-Group5\\BookHub-Group5\\wwwroot\\css\\Index\\shop.css",

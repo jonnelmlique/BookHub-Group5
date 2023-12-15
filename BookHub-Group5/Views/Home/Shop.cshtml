@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "BookHub - Ebook Online Shop";
 }
+@model List<BookHub_Group5.Models.Domain.books>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="~/css/index/swiper-bundle.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 <body>
     <section id="head">
@@ -34,10 +38,27 @@
             </nav>
         </div>
         <div class="header-login">
-         
-            <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
-          
-        </div>
+
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                    if (userEmailClaim != null)
+                    {
+                        <a href="@Url.Action("Library", "User")"><i class="fas fa-user"></i></a>
+                        <label class="profile-text">@userEmailClaim.Value</label>
+
+                    }
+                    else
+                    {
+                        <label class="profile-text">Email not found</label>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+                }
+            </div>
     </header>
 
     <div class="main">
@@ -72,150 +93,60 @@
                 </div>
             </div>
         </div>
-        <div class="main-content">
+
+
+            <div class="main-content">
                 <div class="search">
-                   <input type="text" class="search-txt" />
+                    <input type="text" class="search-txt" id="searchInput" placeholder="Search" />
                     <i class="fas fa-search"></i>
                 </div>
-             <div class="book-list">
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
+                <div class="book-list">
+                    @foreach (var books in Model)
+                    {
+                        <div class="book-card">
+                            <div class="book-image">
+                                @if (books.coverimage != null)
+                                {
+                                    var base64CoverImage = Convert.ToBase64String(books.coverimage);
+                                    <img src="data:image/png;base64,@base64CoverImage" alt="@books.booktitle" />
+                                }
+                                else
+                                {
+                                    <p>No Cover Image</p>
+                                }
                             </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
+                            <div class="book-details">
+                                <div class="title">
+                                    <h2>@books.booktitle</h2>
+                                </div>
+                                <div class="author">
+                                    <p>Author: @books.author</p>
+                                </div>
+                                <div class="genre">
+                                    <p>Genre: @books.genre</p>
+                                </div>
+                                <div class="price">
+                                    <p>₱@books.price</p>
+                                </div>
+                                <div class="btn">
+                                    <a asp-controller="Home" asp-action="BookDetails" asp-route-bookid="@books.bookid">View</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="~/Images/SHAN.jpg" alt="BOOK" />
-                        </div>
-                        <div class="book-details">
-                            <div class="title">
-                                <h2>ONE PIECE</h2>
-                            </div>
-                            <div class="category">
-                                <h3> ANIME </h3>
-                            </div>
-                            <div class="genre">
-                                <h3> ACTION, FANTASY</h3>
-                            </div>
-                            <div class="btn">
-                                <button>Read Now</button>
-                            </div>
-                        </div>
-                    </div>
-             </div>
-    
-        </div>
-
-    </div>
+                    }
+                </div>
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $("#searchInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $(".book-card").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                        });
+                    });
+                });
+            </script>
+           
 
     </section>
     <div class="link" id="assignmentContainer">
@@ -276,5 +207,6 @@
             assignmentContainer.style.display = 'none';
         });
     </script>
+   
 </body>
 </html>
