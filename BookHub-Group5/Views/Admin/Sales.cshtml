@@ -7,7 +7,7 @@
 <div class="sales">
     <div class="search-sales">
         <div class="search-bar">
-            <input type="text" class="search-txt" />
+            <input type="text" class="search-txt" id="searchSalesInput" placeholder="Search" />
             <i class="fas fa-search"></i>
         </div>
         <div class="buttons">
@@ -23,34 +23,30 @@
             </div>
             <div class="date">
                 <p> Specific Date</p>
-                <input type="date" id="birthday" name="birthday" class="sales-date">
+                <input type="date" id="salesDateFilter" name="salesDateFilter" class="sales-date">
             </div>
-            @*  <div class="total-sales">
-            <p>Total Sales</p>
-            <input type="text" class="total-lbl" />
-            </div> *@
         </div>
     </div>
+
     <div class="total-print">
-        <div class="total-sales">
-            <p>Total Sales : </p>
-            <input type="text" class="total-lbl" />
-        </div>
+      <div class="total-sales">
+    <p>Total Sales : </p>
+    <input type="text" value="@ViewBag.TotalSales" class="total-lbl" readonly />
+</div>
+
         <div class="print">
             <button class="print-btn"><i class="fa fa-print" aria-hidden="true"></i>Print Sales</button>
-
         </div>
     </div>
+
     <div class="sales-table">
-        <table id="books">
-           <thead>
+        <table id="salesTable">
+            <thead>
                 <tr>
                     <th>Buyer Email</th>
                     <th>Sale Date</th>
                     <th>Book Name</th>
                     <th>Price</th>
-
-
                 </tr>
             </thead>
             <tbody>
@@ -65,10 +61,22 @@
                 }
             </tbody>
         </table>
-
+    </div>
     </div>
 
-</div>
+    <script>
+    $(document).ready(function () {
+        $("#searchSalesInput").on("keyup", function () {
+            console.log("Search input changed");
+            var value = $(this).val().toLowerCase();
+            $("#salesTable tbody tr").filter(function () {
+                console.log("Filtering rows");
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+    </script>
 
 
 

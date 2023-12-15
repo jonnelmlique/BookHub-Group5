@@ -15,14 +15,60 @@ namespace BookHub_Group5.Controllers
             this.bookHubDBContext = bookHubDBContext;
         }
         [HttpGet]
-        public async Task<IActionResult> Books()
+        //public async Task<IActionResult> Books()
+        //{
+        //    var books = await bookHubDBContext.books.ToListAsync();
+        //    return View(books);
+        //}
+
+        //public async Task<IActionResult> Books(string searchString)
+        //{
+        //    var query = bookHubDBContext.books.AsQueryable();
+
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        query = query.Where(b => b.booktitle.ToLower().Contains(searchString.ToLower()));
+        //    }
+
+        //    var books = await query.ToListAsync();
+        //    return View(books);
+        //}
+
+        public async Task<IActionResult> Books(string searchString)
         {
-            var books = await bookHubDBContext.books.ToListAsync();
+            var query = bookHubDBContext.books.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                query = query.Where(b =>
+                    b.booktitle.ToLower().Contains(searchString) ||
+                    b.author.ToLower().Contains(searchString) ||
+                    b.genre.ToLower().Contains(searchString) ||
+                    b.publicationyear.ToString().Contains(searchString) ||
+                    b.price.ToString().Contains(searchString)
+                );
+            }
+
+            var books = await query.ToListAsync();
             return View(books);
         }
 
+
+
+        [HttpGet]
+
         public IActionResult Dashboard()
         {
+
+            int totalBooks = bookHubDBContext.books.Count();
+
+            decimal totalSales = bookHubDBContext.sales.Sum(s => s.Price);
+            ViewBag.TotalSales = totalSales;
+
+            ViewBag.TotalBooks = totalBooks;
+
+
             return View();
         }
         public IActionResult AddBooks()
@@ -33,11 +79,42 @@ namespace BookHub_Group5.Controllers
         //{
         //    return View();
         //}
-        public async Task<IActionResult> Sales()
+        //public async Task<IActionResult> Sales()
+        //{
+        //    decimal totalSales = bookHubDBContext.sales.Sum(s => s.Price);
+        //    ViewBag.TotalSales = totalSales;
+
+        //    var sales = await bookHubDBContext.sales.ToListAsync();
+        //    return View(sales);
+        //}
+        public async Task<IActionResult> Sales(string searchString, DateTime? saleDate)
         {
-            var sales = await bookHubDBContext.sales.ToListAsync();
-            return View(sales);
+            var query = bookHubDBContext.sales.AsQueryable();
+
+            // Apply the search filter
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                query = query.Where(s =>
+                    s.UserEmail.ToLower().Contains(searchString) ||
+                    s.BookTitle.ToLower().Contains(searchString) ||
+                    s.Price.ToString().Contains(searchString)
+                );
+            }
+
+            if (saleDate.HasValue)
+            {
+                query = query.Where(s => s.SaleDate.Date == saleDate.Value.Date);
+            }
+
+            var filteredSales = await query.ToListAsync();
+
+            decimal totalSales = filteredSales.Sum(s => s.Price);
+            ViewBag.TotalSales = totalSales;
+
+            return View(filteredSales);
         }
+
         public IActionResult Accounts()
         {
             return View();

@@ -60,16 +60,18 @@
 <div class="books">
     <div class="search-book">
         <div class="search-bar">
-            <input type="text" class="search-txt" />
+            <input type="text" class="search-txt" id="searchInput" placeholder="Search" />
             <i class="fas fa-search"></i>
         </div>
         <div class="buttons">
             <button class="btn-book"><a href="@Url.Action("addBooks", "Admin")"><i class='bx bxs-book-heart'></i>Add Books</a></button> 
 @*             <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>Add Books</a></button>
- *@        <button class=" btn btn-info btn-lg btn-book"><a href ="@Url.Action("addBooks", "Admin")"><i class="fas fa-edit"></i>Edit Books</a></button>
+ *@      @*   <button class=" btn btn-info btn-lg btn-book"><a href ="@Url.Action("addBooks", "Admin")"><i class="fas fa-edit"></i>Edit Books</a></button> *@
 @*             <button class=" btn btn-info btn-lg btn-book"><a href="#"><i class="fas fa-trash"></i>Delete Books</a></button>
  *@        </div>
     </div>
+@*     <input type="text" id="searchInput" placeholder="Search by Book Name">
+ *@
     <div class="book-table">
         <table id="books">
             <thead>
@@ -80,8 +82,6 @@
                     <th>Genre</th>
                     <th>Price</th>
                     <th> </th>
-                    <th> </th>
-
 
                 </tr>
             </thead>
@@ -103,4 +103,14 @@
     </div>
 
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#books tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

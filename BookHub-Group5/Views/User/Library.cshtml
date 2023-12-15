@@ -8,24 +8,10 @@
 <div class="library">
     <div class="search-book">
         <div class="search-bar">
-            <input type="text" class="search-txt" />
+            <input type="text" class="search-txt" id="searchInput" placeholder="Search" />
             <i class="fas fa-search"></i>
         </div>
-        <div class="buttons">
-            <div class="custom-select">
-                <select>
-                    <option value="0">Filter Category:</option>
-                    <option value="2">All Category</option>
-                    <option value="2">Fantasy</option>
-                    <option value="3">Fiction</option>
-                    <option value="4">Non-Fiction</option>
-                    <option value="5">Thriller</option>
-                    <option value="6">Novel</option>
-                </select>
-            </div>
-        </div>
     </div>
-
 
     <div class="book-list">
         @foreach (var sales in Model)
@@ -49,11 +35,9 @@
                     <div class="author">
                         <p>Author: @sales.Author</p>
                     </div>
-
                     <div class="genre">
                         <p>Genre: @sales.Genre</p>
                     </div>
-                   
                     <div class="btn">
                         <a asp-controller="User" asp-action="UserLibrary" asp-route-SaleId="@sales.SaleId">View</a>
                     </div>
@@ -62,6 +46,18 @@
         }
     </div>
 </div>
+
+<!-- JavaScript for filtering the book cards -->
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".book-card").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 
 
 <script>

@@ -24,7 +24,23 @@ namespace BookHub_Group5.Controllers
         //    var sales = await bookHubDBContext.sales.ToListAsync();
         //    return View(sales);
         //}
-        public async Task<IActionResult> Library()
+        //public async Task<IActionResult> Library()
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        var userEmailClaim = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+        //        if (userEmailClaim != null)
+        //        {
+        //            var userEmail = userEmailClaim.Value;
+        //            var userSales = await bookHubDBContext.sales.Where(s => s.UserEmail == userEmail).ToListAsync();
+        //            return View(userSales);
+        //        }
+        //    }
+
+        //    return View(new List<sales>());
+        //}
+        public async Task<IActionResult> Library(string searchString)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -33,7 +49,19 @@ namespace BookHub_Group5.Controllers
                 if (userEmailClaim != null)
                 {
                     var userEmail = userEmailClaim.Value;
-                    var userSales = await bookHubDBContext.sales.Where(s => s.UserEmail == userEmail).ToListAsync();
+                    var query = bookHubDBContext.sales.Where(s => s.UserEmail == userEmail).AsQueryable();
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        searchString = searchString.ToLower();
+                        query = query.Where(s =>
+                            s.BookTitle.ToLower().Contains(searchString) ||
+                            s.Author.ToLower().Contains(searchString) ||
+                            s.Genre.ToLower().Contains(searchString)
+                        );
+                    }
+
+                    var userSales = await query.ToListAsync();
                     return View(userSales);
                 }
             }
@@ -53,9 +81,21 @@ namespace BookHub_Group5.Controllers
         {
             return View();
         }
-        public IActionResult PurchaseHistory()
+        public async Task<IActionResult> PurchaseHistory()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                var userEmailClaim = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                if (userEmailClaim != null)
+                {
+                    var userEmail = userEmailClaim.Value;
+                    var userSales = await bookHubDBContext.sales.Where(s => s.UserEmail == userEmail).ToListAsync();
+                    return View(userSales);
+                }
+            }
+
+            return View(new List<sales>());
         }
 
         [HttpGet]

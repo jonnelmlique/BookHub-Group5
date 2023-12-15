@@ -23,9 +23,23 @@ namespace BookHub_Group5.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.bookHubDBContext = bookHubDBContext ?? throw new ArgumentNullException(nameof(bookHubDBContext));
         }
-        public async Task<IActionResult> Shop()
+        public async Task<IActionResult> Shop(string searchString)
         {
-            var books = await bookHubDBContext.books.ToListAsync();
+            var query = bookHubDBContext.books.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                query = query.Where(b =>
+                    b.booktitle.ToLower().Contains(searchString) ||
+                    b.author.ToLower().Contains(searchString) ||
+                    b.genre.ToLower().Contains(searchString) ||
+                    b.publicationyear.ToString().Contains(searchString) ||
+                    b.price.ToString().Contains(searchString)
+                );
+            }
+
+            var books = await query.ToListAsync();
             return View(books);
         }
         
@@ -202,6 +216,46 @@ namespace BookHub_Group5.Controllers
         {
             return "EIlTE-EDVzDyrxQSXkVYAH06-PzU8QhWR9teoSajTqGGM8AidRx2Nny8DzcNzxgayjaeFv9l4MeEMwwt";
         }
+        //public async Task<IActionResult> PaymentSuccess(int bookId, string paymentId, string token, string payerId)
+        //{
+        //    var book = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookId);
+
+        //    if (book != null)
+        //    {
+        //        var userEmailClaim = User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+        //        if (userEmailClaim != null)
+        //        {
+        //            var saleRecord = new sales
+        //            {
+        //                BookId = book.bookid,
+        //                UserEmail = userEmailClaim.Value,
+        //                SaleDate = DateTime.Now,
+        //                Price = book.price,
+
+        //                BookTitle = book.booktitle,
+        //                Author = book.author,
+        //                Genre = book.genre,
+        //                PublicationYear = book.publicationyear,
+        //                Description = book.description,
+        //                CoverImage = book.coverimage,
+        //                BookFile = book.bookfile
+        //            };
+
+        //            bookHubDBContext.sales.Add(saleRecord);
+        //            await bookHubDBContext.SaveChangesAsync();
+        //        }
+        //        else
+        //        {
+        //            TempData["ErrorMessage"] = "Email not found. Please log in first.";
+        //            return RedirectToAction("Shop");
+        //        }
+        //    }
+
+        //    return Content("Payment successful! Thank you for buying the book with ID " + bookId);
+
+        //}
+
         public async Task<IActionResult> PaymentSuccess(int bookId, string paymentId, string token, string payerId)
         {
             var book = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookId);
@@ -230,6 +284,8 @@ namespace BookHub_Group5.Controllers
 
                     bookHubDBContext.sales.Add(saleRecord);
                     await bookHubDBContext.SaveChangesAsync();
+
+                    return RedirectToAction("Shop");
                 }
                 else
                 {
@@ -238,9 +294,8 @@ namespace BookHub_Group5.Controllers
                 }
             }
 
-            return Content("Payment successful! Thank you for buying the book with ID " + bookId);
+            return RedirectToAction("Shop");
         }
-
 
 
     }
