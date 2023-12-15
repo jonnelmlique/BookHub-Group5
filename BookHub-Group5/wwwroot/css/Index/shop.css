@@ -316,3 +316,80 @@ input[type=checkbox]{
         .book-card .book-details .btn button:hover {
             background-color: #706233;
         }
+        
+
+#disqus_thread {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: cornsilk;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+    #disqus_thread .dsq-comment-text .emoji {
+        height: 1em;
+        width: 1em;
+        margin: 0 .05em 0 .1em;
+        vertical-align: -0.1em;
+    }
+
+
+    #disqus_thread h3 {
+        margin-top: 0;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      
+    }
+
+    #disqus_thread p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    #disqus_thread a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        #disqus_thread a:hover {
+            text-decoration: underline;
+        }
+
+    #disqus_thread .dsq-comment-header {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+        #disqus_thread .dsq-comment-header a {
+            color: #333;
+            text-decoration: none;
+        }
+
+            #disqus_thread .dsq-comment-header a:hover {
+                color: #007bff;
+            }
+
+    #disqus_thread .dsq-comment-text {
+        margin-top: 10px;
+        color: #555;
+    }
+
+    #disqus_thread .dsq-comment-footer {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #ccc;
+    }
+
+        #disqus_thread .dsq-comment-footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            #disqus_thread .dsq-comment-footer a:hover {
+                text-decoration: underline;
+            }

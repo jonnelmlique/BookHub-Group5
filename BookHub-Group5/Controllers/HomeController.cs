@@ -183,9 +183,6 @@ namespace BookHub_Group5.Controllers
             return RedirectToAction("Shop");
         }
 
-
-        // Other methods...
-
         private APIContext GetPayPalApiContext()
         {
             var paypalMode = "sandbox"; 
