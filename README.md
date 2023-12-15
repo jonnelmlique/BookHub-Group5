@@ -10,6 +10,8 @@ So get set to explore a whole new reading genre! You are unlocking doors to a un
 # 📁 **INDEX**
 - [ABOUT](#beginner-about)
 - [USAGE](#zap-usage)
+- [ACCOUNT](#open_book-account)
+- [CONTRIBUTION](#fire-contribution)
 
 # :beginner: **ABOUT**
 
@@ -35,7 +37,7 @@ E-Book Ordering System is a web-based application that allows users to browse, s
   https://drive.google.com/open?id=1kLJYQYsRaBTcQmyWvGgQu0Le-xmbXBK2&usp=drive_copy
   https://drive.google.com/open?id=1SApD_pBYZw_dcVtNxNKPM9Lc1E-ozJbY&usp=drive_copy
 
-# 📖 **MANAGE ACCOUNT**
+# :open_book: **ACCOUNT**
 
 - LIBRARY
   https://drive.google.com/open?id=1Y3RzHIW9tzlOvolMjq0bZXGK2Y5k9c7r&usp=drive_copy
@@ -51,3 +53,17 @@ E-Book Ordering System is a web-based application that allows users to browse, s
 
 - PURCHASE HISTORY
   https://drive.google.com/open?id=1jlqXVWJReZH1uRDXQg3VhQDDbjd0P9cc&usp=drive_copy
+
+#  :fire: **CONTRIBUTION**
+ Your contributions are always welcome and appreciated. Following are the things you can do to contribute to this project.
+
+ 1. **Report a bug** <br>
+ If you think you have encountered a bug, and I should know about it, feel free to report it [here]() and I will take care of it.
+
+ 2. **Request a feature** <br>
+ You can also request for a feature [here](), and if it will viable, it will be picked for development.  
+
+ 3. **Create a pull request** <br>
+ It can't get better then this, your pull request will be appreciated by the community. You can get started by picking up any open issues from [here]() and make a pull request.
+
+> If you are new to open-source, make sure to check read more about it [here](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source) and learn more about creating a pull request [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github).
