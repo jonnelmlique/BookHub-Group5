@@ -15,6 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="~/css/index/swiper-bundle.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 <body>
@@ -36,43 +39,78 @@
             </div>
             <div class="header-login">
 
-                <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+
+                    if (userEmailClaim != null)
+                    {
+                        <a href="@Url.Action("Library", "User")"><i class="fas fa-user"></i></a>
+                        <label class="profile-text">@userEmailClaim.Value</label>
+
+                    }
+                    else
+                    {
+                        <label class="profile-text">Email not found</label>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+                }
+           
 
             </div>
           
         </header>
         <div class="product">
             <div class="left">
-                <img src="~/Images/bg2.jpg" style="width:100%">
+                <img src="@Model.CoverImageBase64" style="width:100%">
             </div>
             <div class="right">
                 <div class="info">
                 <div class="title">
-                    <h2>Return of Mount Hua Sect </h2>
+                    <h2>@Model.booktitle </h2>
+                </div>
+                 <div class="author">
+                    <h3>Author : <span>@Model.author</span></h3>
                 </div>
                 <div class="genre">
-                    <span>Regression, Revenge</span>
+                        <p>Genre : <span>@Model.genre</span></p>
                 </div>
                 <div class="price">
-                    <span>P 1000</span>
+                        <p>Price : ₱ <span>@Model.price</span></p>
                 </div>
                 <div class="description">
-                    <p>
-                            We take pride in offering ebooks that stand out in terms of quality, content, and relevance. Our carefully curated collection includes works from acclaimed authors, emerging talents, and experts in various fields. We believe in the power of convenience, and our user-friendly platform ensures that you can explore, purchase, and download your favorite ebooks with ease.
-                            <br />
-                            <br />
-                            We distinguish ourselves by curating an exceptional collection that spans diverse perspectives, offers an interactive reading experience, and prioritizes ad-free, distraction-free enjoyment, creating a seamless and personalized haven for book lovers.
-
-                        </p>
+                    <p> @Model.description</p>
                 </div>
                 <div class="purchase-button">
-                    <button>Purchase Now</button>
+                        <button id="buyNowButton" onclick="location.href='@Url.Action("BuyBook", "Home", new { bookid = Model.bookid })'">Purchase Now</button>
                 </div>
                 </div>
             </div>
         </div>
 
     </section>
+    <section id="comment">
+        <div id="disqus_thread"></div>
+        <script>
+
+            (function () {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://bookhub-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        <script id="dsq-count-scr" src="//bookhub-1.disqus.com/count.js" async></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js"></script>
+    </section>
+
     <div class="link" id="assignmentContainer">
         <div class="contact-head">
             <h2>Contact Information</h2>

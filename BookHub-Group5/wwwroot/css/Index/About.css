@@ -7,7 +7,9 @@
     list-style-type: none;
 }
 
-
+.profile-text {
+    display: none;
+}
 body {
     width: 100%;
     background-color: #fff;

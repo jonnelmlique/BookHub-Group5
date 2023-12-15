@@ -52,7 +52,11 @@ namespace BookHub_Group5.Controllers
 
             return View(books);
         }
-        public IActionResult Privacy()
+        public IActionResult Product()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }
@@ -96,7 +100,7 @@ namespace BookHub_Group5.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> BookDetails(int bookid)
+        public async Task<IActionResult> Product(int bookid)
         {
             var books = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
 

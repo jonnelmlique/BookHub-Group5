@@ -7,7 +7,6 @@
 
 <div class="add-books">
     <div class="title">
-        <a href="@Url.Action("Books", "Admin")"><i class="fa-solid fa-arrow-left"></i></a>
         <h2>ADD BOOK INFORMATION</h2>
     </div>
     <form method="post" asp-controller="Admin" asp-action="Add" enctype="multipart/form-data">
@@ -51,7 +50,7 @@
                     <input type="file" name="BookFile" class="file-upload" />
                 </div>
                 <div class="book-buttons">
-                    <button type="submit" class="book-btn">Add Book</button>
+                    <button type="submit" class="book-btn"><i class='bx bxs-book-heart'></i>Add Book</button>
 @*                     <button class="book-btn">Cancel</button>
  *@
                     <a asp-action="Books" asp-controller="Admin" class="book-btn">Cancel</a>
@@ -59,6 +58,7 @@
             </div>
         </div>
     </form>
+</div>
     <script>
         function previewImage(input) {
             var preview = document.getElementById('coverImagePreview');

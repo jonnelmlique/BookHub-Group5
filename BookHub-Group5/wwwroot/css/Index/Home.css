@@ -13,7 +13,9 @@ body {
     background-color: #fff;
     overflow-y:auto;
 }
-
+.profile-text{
+    display:none;
+}
 #head {
     width: 100%;
     height: 100vh;

@@ -10,7 +10,7 @@
 
 <div class="add-books">
     <div class="title">
-        <a href="@Url.Action("Library", "User")"><i class="fa-solid fa-arrow-left"></i></a>
+       
         <h2>User Library</h2>
     </div>
     <form method="post" asp-controller="User" asp-action="View" enctype="multipart/form-data">
@@ -59,11 +59,11 @@
 @*                     <button type="submit" class="book-btn">Update Book</button>
  *@                    @if (!string.IsNullOrEmpty(Model.BookFileBase64))
                     {
-                        <a href="data:application/pdf;base64,@Model.BookFileBase64" download="BookFile.pdf">Download Books</a>
+                        <a href="data:application/pdf;base64,@Model.BookFileBase64" download="BookFile.pdf" class="book-btn"><i class="fas fa-download"></i>Download Book</a>
                     }
-                    <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>View Books</a></button>
+                    <button type="button" class="book-btn" id="createRoomLink"><i class='bx bxs-book-heart'></i>View Book</button>
 
-                    <a href="@Url.Action("Library", "User")">Back</a>
+                    <a href="@Url.Action("Library", "User")" class="book-btn">Back</a>
 
 
 
@@ -75,29 +75,49 @@
 
     </form>
 
+</div>
+<div class="link" id="assignmentContainer">
+    <div class="view-body">
+        @if (!string.IsNullOrEmpty(Model.BookFileBase64))
+        {
+            <embed src="data:application/pdf;base64,@Model.BookFileBase64" width="100%" height="630px" />
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-
-                <div class="modal-body">
-
-                    @if (!string.IsNullOrEmpty(Model.BookFileBase64))
-                    {
-                        <embed src="data:application/pdf;base64,@Model.BookFileBase64" width="100%" height="600px" />
-
-                    }
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-book" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
+        }
     </div>
+    <div class="view-button">
+        <button id="closeButton">Cancel</button>
+    </div>
+</div>
+<div id="bg-blur"></div>
+<script>
+    document.getElementById('createRoomLink').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var assignmentContainer = document.getElementById('assignmentContainer');
+        var backgroundBlur = document.getElementById('bg-blur');
+
+        if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+            backgroundBlur.style.display = 'block ';
+            assignmentContainer.style.display = 'block';
+        } else {
+            backgroundBlur.style.display = 'none';
+            assignmentContainer.style.display = 'none';
+        }
+    });
+
+
+</script>
+<script>
+    document.getElementById('closeButton').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var assignmentContainer = document.getElementById('assignmentContainer');
+        var backgroundBlur = document.getElementById('bg-blur');
+
+        backgroundBlur.style.display = 'none';
+        assignmentContainer.style.display = 'none';
+    });
+</script>
     <script>
         function previewImage(input) {
             var preview = document.getElementById('coverImagePreview');

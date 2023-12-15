@@ -7,7 +7,9 @@
     list-style-type: none;
 }
 
-
+.profile-text {
+    display: none;
+}
 body {
     width: 100%;
     background-color: #fff;
@@ -161,45 +163,65 @@ header .header-login i:hover{
 .product .right .info{
     height:100%;
     width:100%;
-
+;
 }
 .product .right .info .title{
-   min-height:50px;
-   max-height:150px;
+    min-height:auto;
+    margin-bottom:10px;
+    max-height:150px;
     padding:0 10px;
 
 }
 .product .right .info .title h2{
-    font-size:35px;
+    font-size:50px;
     color:#706233;
+}
+.product .right .info .author{
+    height:50px;
+      display:flex;
+    align-items:center;
+    padding: 0 10px;
+
+}
+.product .right .info .author h3{
+    font-size:20px;
+    letter-spacing:1px;
+    font-family:'Times New Roman';
+    font-weight:400;
+}
+.product .right .info .author h3 span, .product .right .info .genre p span, .product .right .info .price p span{
+    font-weight:bold;
 }
 .product .right .info .genre{
     height:50px;
     display:flex;
     align-items:center;
     padding: 0 10px;
+     
 }
-.product .right .info .genre span{
-    font-size:23px;
-    font-weight:bold;
+.product .right .info .genre p{
+    font-size:18px;
+    font-weight:400;
 }
 .product .right .info .price{
     height:50px;
     display:flex;
     align-items:center;
     padding: 0 10px;
+       
 }
-.product .right .info .price span{
-    font-size:23px;
-    font-weight:bold;
+.product .right .info .price p{
+    font-size:18px;
+    font-weight:400;
 }
 .product .right .info .description{
-    height:300px;
+    height:250px;
     padding:10px;
     letter-spacing:1px;
+  
 }
 .product .right .info .purchase-button{
-    height:calc(100% - 550px);
+    height:calc(100% - 560px);
     display:flex;
     align-items:center;
     justify-content:flex-end;
@@ -211,6 +233,7 @@ header .header-login i:hover{
     border-radius:10px;
     border-color:transparent;
     background-color:#00d90b;
+    color:#fff;
     cursor:pointer;
     transition:0.3s all ease;
 }
@@ -218,6 +241,15 @@ header .header-login i:hover{
     opacity:0.5;
 
 }
+
+#comment{
+    height:50vh;
+    padding:70px;
+}
+
+
+
+
 #assignmentContainer {
     position: fixed;
     top: 50%;
