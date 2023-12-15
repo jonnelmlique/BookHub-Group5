@@ -1,8 +1,6 @@
 ﻿@{
     ViewData["Title"] = "BookHub - Ebook Online Shop";
 }
-@model List<BookHub_Group5.Models.Domain.books>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +9,20 @@
     <title>@ViewData["Title"]</title>
    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
     <link href="~/css/index/home.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="~/Images/Book Hub Favicon.png" />
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="~/css/index/swiper-bundle.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
 </head>
 <body>
     <section id="head">
-        <header>
+        <header id="navbar">
             <div class="header-logo">
-                <img src="~/Images/Book Hub Favicon.png" alt="LOGO">
-                <h2>Book<span>HuB</span></h2>
+                <a href="@Url.Action("Index", "Home")"> <img src="~/Images/Book Hub Favicon.png" alt="LOGO"></a>
+                <a href="@Url.Action("Index", "Home")"><h2>Book<span>HuB</span></h2></a>
             </div>
             <div class="header-nav">
                 <nav>
@@ -30,34 +30,15 @@
                         <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
                         <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
                         <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
-                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#" id="createRoomLink">CONTACT</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="header-login">
-                <i class="fas fa-search"></i>
-                @if (Context.User.Identity.IsAuthenticated)
-                {
-                    var userEmailClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
-
-                    if (userEmailClaim != null)
-                    {
-                        <a href="@Url.Action("Library", "User")"><i class="fas fa-user"></i></a>
-                        <label class="profile-text">@userEmailClaim.Value</label>
-
-                    }
-                    else
-                    {
-                        <label class="profile-text">Email not found</label>
-                    }
-                }
-                else
-                {
-                    <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
-                }
-                <i class="fas fa-shopping-cart"></i>
+              
+               <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+           
             </div>
-
         </header>
         <div class="main">
             <div class="mySlides fade bg-img">
@@ -118,42 +99,179 @@
              </div>
           </div>
        <div class="category-list">
-              
         <div class="slide-container swiper">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                    @foreach (var books in Model)
-                    {
                     <div class="card swiper-slide">
-
                         <div class="image-content">
-
                             <div class="card-image">
-                                            @if (books.coverimage != null)
-                                            {
-                                                var base64CoverImage = Convert.ToBase64String(books.coverimage);
-                                                <img src="data:image/png;base64,@base64CoverImage" alt="@books.booktitle"  />
-                                            }
-                                            else
-                                            {
-                                                <p>No Cover Image</p>
-                                            }
+                                <img src="~/Images/bg3.jpg" alt="" class="card-img">
                             </div>
                         </div>
                         <div class="card-content">
                            <div class="title">
-                                            <h1>@books.booktitle</h1>
+                               <h1>Return of the Mount Hua Sect</h1>
                            </div>
                            <div class="author">
-                            <h3>@books.author</h3>
+                               <h3>Mark Gervic Arca</h3>
                            </div>
                            <div class="price">
-                                            <span>₱@books.price</span>
+                               <span>PRICE 200</span>
                            </div>
                         </div>
-                        
                     </div>
-                   }
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="~/Images/bg4.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                          <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="~/Images/bg4.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                           <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="~/Images/bg3.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                          <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <!--<img src="images/profile5.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+                        <div class="card-content">
+                           <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <!--<img src="images/profile6.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <!--<img src="images/profile7.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+                        <div class="card-content">
+                          <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <!--<img src="images/profile8.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+                        <div class="card-content">
+                           <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <!--<img src="images/profile9.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+                        <div class="card-content">
+                           <div class="title">
+                               <h1>Return of the Mount Hua Sect</h1>
+                           </div>
+                           <div class="author">
+                               <h3>Mark Gervic Arca</h3>
+                           </div>
+                           <div class="price">
+                               <span>PRICE 200</span>
+                           </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="swiper-button-next swiper-navBtn"></div>
@@ -164,64 +282,117 @@
      </div>
   </section>
   <section id="foot">
-        <footer>
-            <div class="main-content">
-                <div class="left box">
-                    <h2>What we offer</h2>
-                    <div class="content">
-                        <p>Discover a world of literary delight at BookHub, where we offer an extensive selection of high-quality ebooks spanning various genres, coupled with intuitive features, personalized recommendations, and a vibrant community, providing an enriching and tailored reading experience for every visitor</p>
-                        <div class="social">
-                            <a href="https://facebook.com/coding.np"><span class="fab fa-facebook-f"></span></a>
-                            <a href="#"><span class="fab fa-twitter"></span></a>
-                            <a href="https://instagram.com/coding.np"><span class="fab fa-instagram"></span></a>
-                            <a href="https://youtube.com/c/codingnepal"><span class="fab fa-youtube"></span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="center box">
-                    <h2>Address</h2>
-                    <div class="content">
-                        <div class="place">
-                            <span class="fas fa-map-marker-alt"></span>
-                            <span class="text">Birendranagar, Surkhet</span>
-                        </div>
-                        <div class="phone">
-                            <span class="fas fa-phone-alt"></span>
-                            <span class="text">+089-765432100</span>
-                        </div>
-                        <div class="email">
-                            <span class="fas fa-envelope"></span>
-                            <span class="text">abc@example.com</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="right box">
-                    <h2>Email us</h2>
-                    <div class="content">
-                        <form action="#">
-                            <div class="email">
-                                <div class="text">Email *</div>
-                                <input type="email" required>
-                            </div>
-                            <div class="msg">
-                                <div class="text">Message *</div>
-                                <textarea rows="2" cols="25" required></textarea>
-                            </div>
-                            <div class="btn">
-                                <button type="submit">Send</button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="footer">
+            <div class="foot-head">
+                <h2>HAVE ANY QUESTION?</h2>
+            </div>
+            <div class="foot-p">
+                <p>Please don't hesitate to contact us if you have any inquiries, suggestions, or feedback. We<br />
+                    value your input and we are here to assist you with any questions you may have.
+                </p>
+            </div>
+            <div class="foot-btn">
+                <button id="createRoomLink2">Contact Us</button>
+            </div>
+        </div>
+        <div class="foot-contact">
+            <div class="contact-info">
+                <div class="info">
+                <h2>Contact Info</h2>
+                    <p><i class="fas fa-envelope"></i> eBook123@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> 09111111111</p>
                 </div>
             </div>
-            <div class="bottom">
-                <center>
-                    <span class="credit"><a href="@Url.Action("Index", "Home")">www.bookhub.com</a> | </span>
-                    <span class="far fa-copyright"></span><span> 2023 All rights reserved.</span>
-                </center>
+            <div class="social">
+                <div class="info">
+                <h2>Follow Us</h2>
+                    <p><i class="fab fa-facebook-f"></i> Facebook</p>
+                    <p><i class="fab fa-twitter"></i> Twitter</p>
+                </div>
             </div>
-        </footer>
+        </div>
+        <div class="foot-last">
+            <span class="far fa-copyright"> 2023 All Rights Reserved</span>
+        </div>
+
+        <div class="link" id="assignmentContainer">
+            <div class="contact-head">
+                <h2>Contact Information</h2>
+            </div>
+            <div class="contact">
+                <h3>Contact Number : </h3>
+                <p>09111111111</p>
+            </div>
+            <div class="email">
+                <div class="email-info">
+                    <span>Email : </span>
+                    <span> eBook123@gmail.com</span>
+                </div>
+                <div class="email-sender">
+                    <input type="text" placeholder="Enter your Email" />
+                </div>
+                <div class="email-sender">
+                    <input type="text" placeholder="Enter Email Subject" />
+                </div>
+                <div class="email-content">
+                    <textarea placeholder="Enter your message here"></textarea>
+                </div>
+                <div class="email-button">
+                    <button>Send</button>
+                    <button id="closeButton">Cancel</button>
+                </div>
+            </div>
+         </div>
+        <div id="bg-blur"></div>
   </section>
+
+    <script>
+        document.getElementById('createRoomLink').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+                backgroundBlur.style.display = 'block ';
+                assignmentContainer.style.display = 'block';
+            } else {
+                backgroundBlur.style.display = 'none';
+                assignmentContainer.style.display = 'none';
+            }
+        });
+
+
+    </script>
+    <script>
+        document.getElementById('createRoomLink2').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+                backgroundBlur.style.display = 'block ';
+                assignmentContainer.style.display = 'block';
+            } else {
+                backgroundBlur.style.display = 'none';
+                assignmentContainer.style.display = 'none';
+            }
+        });
+
+
+    </script>
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            backgroundBlur.style.display = 'none';
+            assignmentContainer.style.display = 'none';
+        });
+        </script>
     <script>
         var swiper = new Swiper(".slide-content", {
             slidesPerView: 4,
@@ -252,6 +423,22 @@
             },
         });
         </script>
+        <script>
+            var lastScrollTop = 0;
+            var navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", function(){
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop){
+                    navbar.style.top = "-80px";
+             
+                }
+                else{
+                    navbar.style.top = "0";
+                   
+                }
+                lastScrollTop = scrollTop;
+            })
+            </script>
     <script>
         
 

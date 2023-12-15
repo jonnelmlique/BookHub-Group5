@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "BookHub - Ebook Online Shop";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
+    <link href="~/css/index/product.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="~/Images/Book Hub Favicon.png" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href="~/css/index/swiper-bundle.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+<body>
+    <section id="head">
+        <header id="navbar">
+            <div class="header-logo">
+                <a href="@Url.Action("Index", "Home")"> <img src="~/Images/Book Hub Favicon.png" alt="LOGO"></a>
+                <a href="@Url.Action("Index", "Home")"><h2>Book<span>HuB</span></h2></a>
+            </div>
+            <div class="header-nav">
+                <nav>
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
+                        <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
+                        <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
+                        <li><a href="#" id="createRoomLink">CONTACT</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-login">
+
+                <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
+
+            </div>
+          
+        </header>
+        <div class="product">
+            <div class="left">
+                <img src="~/Images/bg2.jpg" style="width:100%">
+            </div>
+            <div class="right">
+                <div class="info">
+                <div class="title">
+                    <h2>Return of Mount Hua Sect </h2>
+                </div>
+                <div class="genre">
+                    <span>Regression, Revenge</span>
+                </div>
+                <div class="price">
+                    <span>P 1000</span>
+                </div>
+                <div class="description">
+                    <p>
+                            We take pride in offering ebooks that stand out in terms of quality, content, and relevance. Our carefully curated collection includes works from acclaimed authors, emerging talents, and experts in various fields. We believe in the power of convenience, and our user-friendly platform ensures that you can explore, purchase, and download your favorite ebooks with ease.
+                            <br />
+                            <br />
+                            We distinguish ourselves by curating an exceptional collection that spans diverse perspectives, offers an interactive reading experience, and prioritizes ad-free, distraction-free enjoyment, creating a seamless and personalized haven for book lovers.
+
+                        </p>
+                </div>
+                <div class="purchase-button">
+                    <button>Purchase Now</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="link" id="assignmentContainer">
+        <div class="contact-head">
+            <h2>Contact Information</h2>
+        </div>
+        <div class="contact">
+            <h3>Contact Number : </h3>
+            <p>09111111111</p>
+        </div>
+        <div class="email">
+            <div class="email-info">
+                <span>Email : </span>
+                <span> eBook123@gmail.com</span>
+            </div>
+            <div class="email-sender">
+                <input type="text" placeholder="Enter your Email" />
+            </div>
+            <div class="email-sender">
+                <input type="text" placeholder="Enter Email Subject" />
+            </div>
+            <div class="email-content">
+                <textarea placeholder="Enter your message here"></textarea>
+            </div>
+            <div class="email-button">
+                <button>Send</button>
+                <button id="closeButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="bg-blur"></div>
+    <script>
+        document.getElementById('createRoomLink').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+                backgroundBlur.style.display = 'block ';
+                assignmentContainer.style.display = 'block';
+            } else {
+                backgroundBlur.style.display = 'none';
+                assignmentContainer.style.display = 'none';
+            }
+        });
+
+
+    </script>
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            backgroundBlur.style.display = 'none';
+            assignmentContainer.style.display = 'none';
+        });
+    </script>
+    <script>
+        var lastScrollTop = 0;
+        var navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                navbar.style.top = "-80px";
+
+            }
+            else {
+                navbar.style.top = "0";
+
+            }
+            lastScrollTop = scrollTop;
+        })
+    </script>
+</body>
+</html>
