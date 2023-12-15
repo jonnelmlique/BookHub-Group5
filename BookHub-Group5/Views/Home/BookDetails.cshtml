@@ -71,8 +71,11 @@
                     <p class="card-text">@Model.description</p>
                     <p class="card-text"><strong>Author:</strong> @Model.author</p>
                     <p class="card-text"><strong>Price:</strong> ₱@Model.price</p>
-                    <button class="btn btn-primary btn-lg" onclick="buyBook('@Model.bookid')">Buy Now</button>
-                </div>
+@*                     <button class="btn btn-primary btn-lg" onclick="buyBook('@Model.bookid')">Buy Now</button>
+ *@
+                    <button id="buyNowButton" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("BuyBook", "Home", new { bookid = Model.bookid })'">Buy Now</button>
+
+</div>
             </div>
         </div>
 
@@ -80,13 +83,29 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script>
+       @*  <script>
             function buyBook(bookId) {
                 alert('Thank you for buying the book with ID ' + bookId + '!');
             }
-        </script>
+        </script> *@
 
     </section>
 </body>
 </html>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.getElementById('buyNowButton').addEventListener('click', function () {
+        var errorMessage = "@TempData["ErrorMessage"]";
+        if (errorMessage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorMessage,
+            });
+        }
+    });
+</script>
