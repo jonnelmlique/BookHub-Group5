@@ -178,7 +178,9 @@
             <div class="contact-info">
                 <div class="info">
                 <h2>Contact Info</h2>
-                    <p><i class="fas fa-envelope"></i> eBook123@gmail.com</p>
+                    <p>
+                        <i class="fas fa-envelope"></i> bookhubofficialcontact@gmail.com
+                    </p>
                     <p><i class="fas fa-phone-alt"></i> 09111111111</p>
                 </div>
             </div>
@@ -193,7 +195,7 @@
         <div class="foot-last">
             <span class="far fa-copyright"> 2023 All Rights Reserved</span>
         </div>
-
+        <form asp-controller="Home" asp-action="SendContactEmail" method="post">
         <div class="link" id="assignmentContainer">
             <div class="contact-head">
                 <h2>Contact Information</h2>
@@ -207,6 +209,7 @@
                     <span>Email : </span>
                     <span> eBook123@gmail.com</span>
                 </div>
+
                 <div class="email-sender">
                     <input type="text" placeholder="Enter your Email" />
                 </div>
@@ -222,6 +225,7 @@
                 </div>
             </div>
          </div>
+         </form>
         <div id="bg-blur"></div>
   </section>
 

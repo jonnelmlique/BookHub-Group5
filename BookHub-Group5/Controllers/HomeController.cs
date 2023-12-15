@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PayPal.Api;
+using System.Net.Mail;
+using System.Net;
 
 namespace BookHub_Group5.Controllers
 {
@@ -296,7 +298,45 @@ namespace BookHub_Group5.Controllers
 
             return RedirectToAction("Shop");
         }
+        [HttpPost]
+        public async Task<IActionResult> SendContactEmail(string senderEmail, string subject, string message)
+        {
+            try
+            {
+                // Update with your SMTP server details
+                string smtpServer = "smtp.gmail.com";
+                int smtpPort = 587;
+                string smtpUsername = "bookhubofficialcontact@gmail.com";
+                string smtpPassword = "onzfuuhzstvorksa";
 
+                using (var client = new SmtpClient(smtpServer, smtpPort))
+                {
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
+                    client.EnableSsl = true;
+
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress(senderEmail),
+                        Subject = subject,
+                        Body = message,
+                        IsBodyHtml = false
+                    };
+
+                    mailMessage.To.Add("bookhubofficialcontact@gmail.com");
+
+                    await client.SendMailAsync(mailMessage);
+                }
+
+                TempData["SuccessMessage"] = "Email sent successfully!";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions (e.g., log them)
+                TempData["ErrorMessage"] = "An error occurred while sending the email.";
+                return RedirectToAction("Index"); 
+        }
 
     }
 

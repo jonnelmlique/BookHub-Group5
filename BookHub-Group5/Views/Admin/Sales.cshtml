@@ -2,6 +2,9 @@
     Layout = "~/Views/Shared/Layout/_AdminPage.cshtml";
 }
 @model List<BookHub_Group5.Models.Domain.sales>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Include Font Awesome for the print icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-c1XIM1tbFtS2UC3OV7n24Cq74K8OPtiTmA2GQ4R+U7ZcNEU2nqj4poDLkFfnjYo5" crossorigin="anonymous">
 
 <link href="~/css/admin/sales.css" rel="stylesheet" />
 <div class="sales">
@@ -10,7 +13,7 @@
             <input type="text" class="search-txt" id="searchSalesInput" placeholder="Search" />
             <i class="fas fa-search"></i>
         </div>
-        <div class="buttons">
+      @*   <div class="buttons">
             <div class="custom-select">
                 <select>
                     <option value="0">Filter Sales:</option>
@@ -25,7 +28,7 @@
                 <p> Specific Date</p>
                 <input type="date" id="salesDateFilter" name="salesDateFilter" class="sales-date">
             </div>
-        </div>
+        </div> *@
     </div>
 
     <div class="total-print">
@@ -36,6 +39,7 @@
 
         <div class="print">
             <button class="print-btn"><i class="fa fa-print" aria-hidden="true"></i>Print Sales</button>
+
         </div>
     </div>
 
@@ -77,7 +81,15 @@
     });
 
     </script>
-
+<script>
+    $(document).ready(function () {
+        $(".print-btn").on("click", function () {
+            $(".print, .sales-summary").hide();
+            window.print();
+            $(".print, .sales-summary").show();
+        });
+    });
+</script>
 
 
 
