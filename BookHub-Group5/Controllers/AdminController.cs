@@ -29,9 +29,14 @@ namespace BookHub_Group5.Controllers
         {
             return View();
         }
-        public IActionResult Sales()
+        //public async Task<IActionResult> Sales()
+        //{
+        //    return View();
+        //}
+        public async Task<IActionResult> Sales()
         {
-            return View();
+            var sales = await bookHubDBContext.sales.ToListAsync();
+            return View(sales);
         }
         public IActionResult Accounts()
         {
@@ -91,53 +96,13 @@ namespace BookHub_Group5.Controllers
                 return memoryStream.ToArray();
             }
         }
-    
 
-    //[HttpPost]
-    //public async Task<IActionResult> Add(AddBooksViewModel addBooksRequest)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        var book = new books
-    //        {
-    //            booktitle = addBooksRequest.booktitle,
-    //            author = addBooksRequest.author,
-    //            genre = addBooksRequest.genre,
-    //            publicationyear = addBooksRequest.publicationYear,
-    //            description = addBooksRequest.description,
-    //            coverimage = await ConvertFormFileToByteArray(addBooksRequest.CoverImage),
-    //            bookfile = await ConvertFormFileToByteArray(addBooksRequest.BookFile),
-    //            price = addBooksRequest.price
-    //        };
 
-    //        await bookHubDBContext.books.AddAsync(book);
-    //        await bookHubDBContext.SaveChangesAsync();
 
-    //        return RedirectToAction("AddBooks", "Admin");
-    //    }
-
-    //    // If the model state is not valid, return to the view with validation errors
-    //    return View(addBooksRequest);
-    //}
-
-    //private async Task<byte[]> ConvertFormFileToByteArray(IFormFile file)
-    //{
-    //    if (file == null)
-    //    {
-    //        return null;
-    //    }
-
-    //    using (var memoryStream = new MemoryStream())
-    //    {
-    //        await file.CopyToAsync(memoryStream);
-    //        return memoryStream.ToArray();
-    //    }
-    //}
-
-    [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> View(int bookid)
         {
-          var books = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
+            var books = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
 
             if (books != null)
             {
@@ -149,7 +114,7 @@ namespace BookHub_Group5.Controllers
                     genre = books.genre,
                     publicationyear = books.publicationyear,
                     description = books.description,
-                    coverimage = books.coverimage, 
+                    coverimage = books.coverimage,
                     bookfile = books.bookfile,
                     price = books.price
                 };
@@ -158,13 +123,13 @@ namespace BookHub_Group5.Controllers
                     var base64CoverImage = Convert.ToBase64String(viewModel.coverimage);
                     viewModel.CoverImageBase64 = $"data:image/png;base64,{base64CoverImage}";
                 }
-                
-                if (viewModel.bookfile != null)
-        {
-            viewModel.BookFileBase64 = Convert.ToBase64String(viewModel.bookfile);
-        }
 
-                return View(viewModel);
+                if (viewModel.bookfile != null)
+                {
+                    viewModel.BookFileBase64 = Convert.ToBase64String(viewModel.bookfile);
+                }
+
+                return await Task.Run(() => View("View", viewModel));
 
             }
             return RedirectToAction("Books");
@@ -172,5 +137,55 @@ namespace BookHub_Group5.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> View(UpdateBooksViewModel model)
+        {
+            var books = await bookHubDBContext.books.FindAsync(model.bookid);
+
+            if (books != null)
+            {
+                books.booktitle = model.booktitle;
+                books.author = model.author;
+                books.genre = model.genre;
+                books.publicationyear = model.publicationyear;
+                books.description = model.description;
+                books.price = model.price;
+
+                if (model.coverimage != null)
+                {
+                    books.coverimage = model.coverimage;
+                }
+
+                if (model.bookfile != null)
+                {
+                    books.bookfile = model.bookfile;
+                }
+
+                await bookHubDBContext.SaveChangesAsync();
+
+                return RedirectToAction("Books");
+
+            }
+            return RedirectToAction("Books");
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(UpdateBooksViewModel model)
+        {
+            var books = await bookHubDBContext.books.FindAsync(model.bookid);
+            if (books != null)
+            {
+                bookHubDBContext.books.Remove(books);
+                await bookHubDBContext.SaveChangesAsync();
+                return RedirectToAction("Books");
+
+            }
+            return RedirectToAction("Books");
+
+
+        }
     }
 }
+
+
+
+

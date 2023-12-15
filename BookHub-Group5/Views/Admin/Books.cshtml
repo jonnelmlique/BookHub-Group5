@@ -80,6 +80,8 @@
                     <th>Genre</th>
                     <th>Price</th>
                     <th> </th>
+                    <th> </th>
+
 
                 </tr>
             </thead>
@@ -93,6 +95,7 @@
                         <td>@books.genre</td>
                         <td>@books.price</td>
                         <td><a asp-controller="Admin" asp-action="View" asp-route-bookid="@books.bookid">Edit</a></td>
+
                     </tr>
                 }
             </tbody>

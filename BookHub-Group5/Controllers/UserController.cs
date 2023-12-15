@@ -57,5 +57,44 @@ namespace BookHub_Group5.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> UserLibrary(int SaleId)
+        {
+            var sales = await bookHubDBContext.sales.FirstOrDefaultAsync(x => x.SaleId == SaleId);
+
+            if (sales != null)
+            {
+                var viewModel = new LibraryBooks()
+                {
+                    BookId = sales.BookId,
+                    BookTitle = sales.BookTitle,
+                    Author = sales.Author,
+                    Genre = sales.Genre,
+                    PublicationYear = sales.PublicationYear,
+                    Description = sales.Description,
+                    CoverImage = sales.CoverImage,
+                    BookFile = sales.BookFile,
+
+                    Price = sales.Price
+                };
+
+                if (viewModel.CoverImage != null)
+                {
+                    var base64CoverImage = Convert.ToBase64String(viewModel.CoverImage);
+                    viewModel.CoverImageBase64 = $"data:image/png;base64,{base64CoverImage}";
+                }
+                if (viewModel.BookFile != null)
+                {
+                    viewModel.BookFileBase64 = Convert.ToBase64String(viewModel.BookFile);
+                }
+
+                return View(viewModel);
+            }
+
+            return RedirectToAction("Library");
+        }
+
+
     }
 }

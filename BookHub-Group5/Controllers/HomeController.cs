@@ -113,7 +113,6 @@ namespace BookHub_Group5.Controllers
 
             }
             return RedirectToAction("Shop");
-            //if (books == null)
         }
         [HttpGet]
         public async Task<IActionResult> BuyBook(int bookid)
@@ -132,14 +131,10 @@ namespace BookHub_Group5.Controllers
                 return RedirectToAction("Shop");
             }
 
-            // User is authenticated, and email is available
             var book = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookid);
 
             if (book != null)
             {
-                //// Set the UserEmail property
-                //book.UserEmail = userEmailClaim.Value;
-
                 var apiContext = GetPayPalApiContext();
 
                 var payment = new Payment
@@ -193,7 +188,7 @@ namespace BookHub_Group5.Controllers
 
         private APIContext GetPayPalApiContext()
         {
-            var paypalMode = "sandbox"; // "live" for live transactions
+            var paypalMode = "sandbox"; 
             var apiContext = new APIContext(new OAuthTokenCredential(GetPayPalClientId(), GetPayPalClientSecret()).GetAccessToken());
 
             apiContext.Config = new Dictionary<string, string> { { "mode", paypalMode } };
@@ -203,18 +198,15 @@ namespace BookHub_Group5.Controllers
 
         private string GetPayPalClientId()
         {
-            // Return your PayPal Sandbox Client ID or live Client ID
             return "AVdRCS1RC4uiAHXCxIXZdWam2I6BTOAdS_v5IuFc2SMD52cbjxcV_aqOMa_orlQAN8yLET3rIWQvP_rG";
         }
 
         private string GetPayPalClientSecret()
         {
-            // Return your PayPal Sandbox Client Secret or live Client Secret
             return "EIlTE-EDVzDyrxQSXkVYAH06-PzU8QhWR9teoSajTqGGM8AidRx2Nny8DzcNzxgayjaeFv9l4MeEMwwt";
         }
         public async Task<IActionResult> PaymentSuccess(int bookId, string paymentId, string token, string payerId)
         {
-            // Retrieve the book based on the bookId
             var book = await bookHubDBContext.books.FirstOrDefaultAsync(x => x.bookid == bookId);
 
             if (book != null)
@@ -223,7 +215,6 @@ namespace BookHub_Group5.Controllers
 
                 if (userEmailClaim != null)
                 {
-                    // Insert a record into the sales table
                     var saleRecord = new sales
                     {
                         BookId = book.bookid,
@@ -231,7 +222,6 @@ namespace BookHub_Group5.Controllers
                         SaleDate = DateTime.Now,
                         Price = book.price,
 
-                        // Additional book information
                         BookTitle = book.booktitle,
                         Author = book.author,
                         Genre = book.genre,
@@ -241,19 +231,16 @@ namespace BookHub_Group5.Controllers
                         BookFile = book.bookfile
                     };
 
-                    // Add the sale record to the sales table
                     bookHubDBContext.sales.Add(saleRecord);
                     await bookHubDBContext.SaveChangesAsync();
                 }
                 else
                 {
-                    // Handle the case where user email claim is not found
                     TempData["ErrorMessage"] = "Email not found. Please log in first.";
                     return RedirectToAction("Shop");
                 }
             }
 
-            // Your existing logic...
             return Content("Payment successful! Thank you for buying the book with ID " + bookId);
         }
 
