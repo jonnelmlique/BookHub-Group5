@@ -6,7 +6,9 @@
     list-style-type: none;
 }
 
-
+.profile-text {
+    display: none;
+}
 body {
     width: 100%;
     background-color: #fff;
@@ -227,12 +229,13 @@ input[type=checkbox]{
 .book-card {
     width: 420px;
     height: 250px;
-    border: 1px solid black;
     margin: 10px;
     display: flex;
     padding: 10px;
-    background-color: #FAE7C9;
-    border-radius: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
 }
 
     .book-card .book-image {
@@ -253,6 +256,7 @@ input[type=checkbox]{
         height: 100%;
         padding: 5px 10px;
         overflow-y: scroll;
+      
     }
 
 .book-details::-webkit-scrollbar {
@@ -269,25 +273,23 @@ input[type=checkbox]{
 }
 
 .book-card .book-details .title {
-    height: auto;
+    min-height:40px;
+    max-height:80px;
     width: 100%;
     display: flex;
-    align-items: center;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom:10px;
 }
 
     .book-card .book-details .title h2 {
-        font-size: 23px;
+        font-size: 25px;
         font-family: 'Times New Roman';
     }
 
-.book-card .book-details .category {
-    height: auto;
+.book-card .book-details .author {
+    min-height:auto;
+    max-height: 40px;
     width: 100%;
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
     .book-card .book-details .category h3, .genre h3 {
@@ -297,13 +299,26 @@ input[type=checkbox]{
     }
 
 .book-card .book-details .genre {
-    height: auto;
+    height: 30px;
     width: 100%;
     display: flex;
     align-items: center;
     font-family: 20px;
     font-family: 'Times New Roman';
-    margin-bottom: 10px;
+  
+}
+.book-card .book-details .price {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+
+
+}
+.book-card .book-details .price p{
+     font-family: 18px;
+    font-family: 'Times New Roman';
 }
 
 .book-card .book-details .btn {
@@ -311,9 +326,10 @@ input[type=checkbox]{
     width: 100%;
     display: flex;
     padding: 5px 10px;
+  
 }
 
-    .book-card .book-details .btn button {
+    .book-card .book-details .btn a {
         width: 100%;
         height: 100%;
         border-radius: 10px;
@@ -321,9 +337,13 @@ input[type=checkbox]{
         color: #fff;
         border-color: transparent;
         transition: 0.3s all ease;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        letter-spacing:1px;
     }
 
-        .book-card .book-details .btn button:hover {
+        .book-card .book-details .btn a:hover {
             background-color: #706233;
         }
 

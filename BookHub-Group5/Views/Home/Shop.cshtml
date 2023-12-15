@@ -129,13 +129,14 @@
                                     <p>₱@books.price</p>
                                 </div>
                                 <div class="btn">
-                                    <a asp-controller="Home" asp-action="BookDetails" asp-route-bookid="@books.bookid">View</a>
+                                    <a asp-controller="Home" asp-action="Product" asp-route-bookid="@books.bookid">View</a>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
             </div>
+        </div>
             <script>
                 $(document).ready(function () {
                     $("#searchInput").on("keyup", function () {

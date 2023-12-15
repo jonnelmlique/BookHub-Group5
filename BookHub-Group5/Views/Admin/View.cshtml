@@ -6,9 +6,9 @@
 
 <link href="~/css/admin/addbooks.css" rel="stylesheet" />
 
+
 <div class="add-books">
     <div class="title">
-        <a href="@Url.Action("Books", "Admin")"><i class="fa-solid fa-arrow-left"></i></a>
         <h2>UPDATE BOOK INFORMATION</h2>
     </div>
     <form method="post" asp-controller="Admin" asp-action="View" enctype="multipart/form-data">
@@ -43,13 +43,9 @@
                 </div>
             </div>
             <div class="book-details">
-                @*    <div class="information">
-                <!-- Input for Category -->
-                <label class="info-lbl">Category :</label>
-                <input type="text" class="info-txt" asp-for="genre" />
-                </div> *@
+              
                 <div class="information">
-                    <!-- Input for Genre -->
+                  
                     <label class="info-lbl">Genre :</label>
                     <input type="text" class="info-txt" asp-for="genre" />
                 </div>
@@ -70,16 +66,16 @@
                 </div>
 
                 <div class="book-buttons">
-                    <button type="submit" class="book-btn">Update Book</button>
-                    <button type="submit" class="book-btn" asp-action="Delete" asp-controller="Admin">Delete</button>
+                   
 
                     @if (!string.IsNullOrEmpty(Model.BookFileBase64))
                     {
-                        <a href="data:application/pdf;base64,@Model.BookFileBase64" download="BookFile.pdf">Download Books</a>
+                        <a href="data:application/pdf;base64,@Model.BookFileBase64" download="BookFile.pdf" class="book-btn"><i class="fas fa-download"></i>Download</a>
                     }
-                    <button type="button" class="btn  btn-info btn-lg btn-book " data-toggle="modal" data-backdrop="false" data-target="#myModal"><a href="#"><i class='bx bxs-book-heart'></i>View Books</a></button>
-                   
-                    <a href="@Url.Action("Books", "Admin")">Cancel</a>
+                    <button id="createRoomLink" type="button" class="book-btn"><i class='bx bxs-book-heart'></i>View Book</></button>
+                    <button type="submit" class="book-btn"><i class="fas fa-edit"></i>Update</button>
+                    <button type="submit" class="book-btn" asp-action="Delete" asp-controller="Admin"><i class="fas fa-trash"></i>Delete</button>
+                    <a class="book-btn" href="@Url.Action("Books", "Admin")">Cancel</a>
               
 
 
@@ -92,29 +88,50 @@
      
     </form>
 
+</div>
+   
+<div class="link" id="assignmentContainer">
+    <div class="view-body">
+        @if (!string.IsNullOrEmpty(Model.BookFileBase64))
+        {
+            <embed src="data:application/pdf;base64,@Model.BookFileBase64" width="100%" height="630px" />
 
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-
-                <div class="modal-body">
-
-                    @if (!string.IsNullOrEmpty(Model.BookFileBase64))
-                    {
-                        <embed src="data:application/pdf;base64,@Model.BookFileBase64" width="100%" height="600px" />
-
-                    }
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-book" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
+        }
     </div>
+    <div class="view-button">
+        <button id="closeButton">Cancel</button>
+    </div>
+</div>
+<div id="bg-blur"></div>
+<script>
+    document.getElementById('createRoomLink').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var assignmentContainer = document.getElementById('assignmentContainer');
+        var backgroundBlur = document.getElementById('bg-blur');
+
+        if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+            backgroundBlur.style.display = 'block ';
+            assignmentContainer.style.display = 'block';
+        } else {
+            backgroundBlur.style.display = 'none';
+            assignmentContainer.style.display = 'none';
+        }
+    });
+
+
+</script>
+<script>
+    document.getElementById('closeButton').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var assignmentContainer = document.getElementById('assignmentContainer');
+        var backgroundBlur = document.getElementById('bg-blur');
+
+        backgroundBlur.style.display = 'none';
+        assignmentContainer.style.display = 'none';
+    });
+</script>
     <script>
         function previewImage(input) {
             var preview = document.getElementById('coverImagePreview');
