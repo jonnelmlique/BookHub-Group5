@@ -62,7 +62,11 @@
                 <div class="tagline">
                     <div class="lines1">  <h2>Find What You Like</h2></div>
                     <div class="lines2"> <p>Explore a world of endless stories in our digital library, where every e-book brings tales to life, one click at a time. Immerse yourself in the magic of reading, all from the comfort of your screen.</p></div>
-                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                    <div class="lines3">
+                        <button>
+                            <i class="fas fa-shopping-cart"></i>                    <a href="@Url.Action("Shop", "Home")">Buy Now</a>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="mySlides fade bg-img">
@@ -70,15 +74,23 @@
                 <div class="tagline">
                     <div class="lines1">  <h2>Start Your Digital Reading Adventure</h2></div>
                     <div class="lines2">  <p>Embark on your digital reading adventure now and expand your library with every click, as we bring the world of literature to your fingertips.</p></div>
-                    <div class="lines3">  <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                    <div class="lines3">
+                        <button>
+                            <i class="fas fa-shopping-cart"></i>                    <a href="@Url.Action("Shop", "Home")">Buy Now</a>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="mySlides fade bg-img">
                 <img src="~/Images/bg2.jpg" style="width:100%">
                 <div class="tagline">
                     <div class="lines1"><h2>Unlock The Power of Book Reviews</h2></div>
-                    <div class="lines2"> <p>Create your account and embark on your literary journey. Let reviews be your compass as you explore the world of e-books with us.</p></div>
-                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                    <div class="lines2"> <p>Create your account and embark on your literary jowurney. Let reviews be your compass as you explore the world of e-books with us.</p></div>
+                    <div class="lines3">
+                        <button>
+                            <i class="fas fa-shopping-cart"></i><a href="@Url.Action("Shop", "Home")">Buy Now</a>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="mySlides fade bg-img">
@@ -86,7 +98,11 @@
                 <div class="tagline">
                     <div class="lines1">  <h2>One Click Purchases</h2></div>
                     <div class="lines2">  <p>Simplify your buying experience with one-click PayPal purchases. Enjoy seamless transactions for your favorite e-books with just a single click.</p></div>
-                    <div class="lines3"> <button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                    <div class="lines3">
+                        <button>
+                            <i class="fas fa-shopping-cart"></i> <a href="@Url.Action("Shop", "Home")">Buy Now</a>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="mySlides fade bg-img">
@@ -94,7 +110,11 @@
                 <div class="tagline">
                     <div class="lines1"><h2>Unlocking Worlds, One Click at a Time.</h2></div>
                     <div class="lines2"> <p>Discover a digital library where stories come to life, and explore a world of endless possibilities. Immerse yourself, one e-book at a time, in the magic of storytelling.</p></div>
-                    <div class="lines3"><button><i class="fas fa-shopping-cart"></i>Buy Now</button></div>
+                    <div class="lines3">
+                        <button>
+                            <i class="fas fa-shopping-cart"></i> <a href="@Url.Action("Shop", "Home")">Buy Now</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,7 +131,8 @@
          <div class="category-head">
              <div class="view">
                  <h2>Find What You Like</h2>
-                 <a href="#">VIEW MORE</a>
+                    <a href="@Url.Action("Shop", "Home")">VIEW MORE</a>
+
              </div>
           </div>
             <div class="category-list">

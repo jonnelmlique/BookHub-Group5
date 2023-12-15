@@ -44,7 +44,7 @@ namespace BookHub_Group5.Controllers
             var books = await query.ToListAsync();
             return View(books);
         }
-        
+
         public async Task<IActionResult> Index()
         {
             var books = await bookHubDBContext.books.ToListAsync();
@@ -205,7 +205,7 @@ namespace BookHub_Group5.Controllers
 
         private APIContext GetPayPalApiContext()
         {
-            var paypalMode = "sandbox"; 
+            var paypalMode = "sandbox";
             var apiContext = new APIContext(new OAuthTokenCredential(GetPayPalClientId(), GetPayPalClientSecret()).GetAccessToken());
 
             apiContext.Config = new Dictionary<string, string> { { "mode", paypalMode } };
@@ -339,9 +339,10 @@ namespace BookHub_Group5.Controllers
             {
                 // Handle exceptions (e.g., log them)
                 TempData["ErrorMessage"] = "An error occurred while sending the email.";
-                return RedirectToAction("Index"); 
+                return RedirectToAction("Index");
+            }
+
         }
 
     }
-
 }

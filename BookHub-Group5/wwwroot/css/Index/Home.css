@@ -226,10 +226,16 @@ header .header-login i:hover{
             font-size: 20px;
             padding: 5px 15px 5px 0;
         }
+        .bg-img .tagline button a{
+            color: #fff;
+        }
+        .bg-img .tagline button:hover a{
+            color: #000;
+        }
 
-.mySlides {
-    display: none;
-}
+        .mySlides {
+            display: none;
+        }
 
 .dot {
     height: 15px;
