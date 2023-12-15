@@ -7,6 +7,7 @@
     <link rel="icon" href="~/Images/Book Hub Favicon.png" type="image/x-icon" />
     @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  *@
     <link href="~/css/account/login.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="~/Images/Book Hub Favicon.png" />
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
 </head>
@@ -23,16 +24,16 @@
                         <li><a href="@Url.Action("Index", "Home")">HOME</a></li>
                         <li><a href="@Url.Action("About", "Home")">ABOUT</a></li>
                         <li><a href="@Url.Action("Shop", "Home")">SHOP</a></li>
-                        <li><a href="#">CONTACT</a></li>
+                        <li><a href="#" id="createRoomLink">CONTACT</a></li>
 
                     </ul>
                 </nav>
 
             </div>
             <div class="header-login">
-                <i class="fas fa-search"></i>
+              
                 <a href="@Url.Action("Login", "Account")"><i class="fas fa-user"></i></a>
-                <i class="fas fa-shopping-cart"></i>
+              
             </div>
         </header>
         <div class="login">
@@ -101,6 +102,65 @@
         </div>
 
     </section>
+    <div class="link" id="assignmentContainer">
+        <div class="contact-head">
+            <h2>Contact Information</h2>
+        </div>
+        <div class="contact">
+            <h3>Contact Number : </h3>
+            <p>09111111111</p>
+        </div>
+        <div class="email">
+            <div class="email-info">
+                <span>Email : </span>
+                <span> eBook123@gmail.com</span>
+            </div>
+            <div class="email-sender">
+                <input type="text" placeholder="Enter your Email" />
+            </div>
+            <div class="email-sender">
+                <input type="text" placeholder="Enter Email Subject" />
+            </div>
+            <div class="email-content">
+                <textarea placeholder="Enter your message here"></textarea>
+            </div>
+            <div class="email-button">
+                <button>Send</button>
+                <button id="closeButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="bg-blur"></div>
+    <script>
+        document.getElementById('createRoomLink').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            if (assignmentContainer.style.display === 'none' || assignmentContainer.style.display === '') {
+                backgroundBlur.style.display = 'block ';
+                assignmentContainer.style.display = 'block';
+            } else {
+                backgroundBlur.style.display = 'none';
+                assignmentContainer.style.display = 'none';
+            }
+        });
+
+
+    </script>
+   
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var assignmentContainer = document.getElementById('assignmentContainer');
+            var backgroundBlur = document.getElementById('bg-blur');
+
+            backgroundBlur.style.display = 'none';
+            assignmentContainer.style.display = 'none';
+        });
+    </script>
     <script>
         function flipCard() {
             var card = document.getElementById('myFlipCard');

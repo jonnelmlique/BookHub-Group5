@@ -18,11 +18,15 @@ namespace BookHub_Group5.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Product()
         {
             return View();
         }
         public IActionResult Shop()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }

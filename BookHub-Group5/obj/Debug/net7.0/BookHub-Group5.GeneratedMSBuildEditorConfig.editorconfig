@@ -9,97 +9,103 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BookHub_Group5
 build_property.RootNamespace = BookHub_Group5
-build_property.ProjectDir = C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5\
+build_property.ProjectDir = F:\Users\Gervic\Documents\BOOKHUB\BookHub-Group5\BookHub-Group5\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\jonne\OneDrive\Documents\Projects\BookHub-Group5\BookHub-Group5
+build_property.MSBuildProjectDirectory = F:\Users\Gervic\Documents\BOOKHUB\BookHub-Group5\BookHub-Group5
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Account/Login.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/Accounts.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/Accounts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/AddBooks.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/AddBooks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/Books.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/Books.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/Dashboard.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/Sales.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/Sales.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2FsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Admin/View.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Admin/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Home/Index.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Home/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Home/Shop.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Home/Shop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG9wLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Shared/Error.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Shared/Layout/_AdminPage.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Shared/Layout/_AdminPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dFxfQWRtaW5QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Shared/Layout/_UserPage.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Shared/Layout/_UserPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dFxfVXNlclBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/User/AccountDetails.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/User/AccountDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBY2NvdW50RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/User/Cart.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/User/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/User/Library.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/User/Library.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMaWJyYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/User/PendingBooks.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/User/PendingBooks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQZW5kaW5nQm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/User/PurchaseHistory.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/User/PurchaseHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQdXJjaGFzZUhpc3RvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/_ViewImports.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/_ViewStart.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jonne/OneDrive/Documents/Projects/BookHub-Group5/BookHub-Group5/Views/Shared/_Layout.cshtml]
+[F:/Users/Gervic/Documents/BOOKHUB/BookHub-Group5/BookHub-Group5/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-46891lc5sk

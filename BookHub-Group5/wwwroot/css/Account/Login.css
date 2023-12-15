@@ -78,13 +78,13 @@ header {
             height: 100%;
             width: 100px;
             padding: 10px;
-            margin: 0 10px 0 30px;
+            margin: 0 20px;
         }
 
         header .header-logo h2 {
             font-size: 35px;
             font-family: 'Times New Roman';
-            color: #000;
+            color:#000;
         }
 
             header .header-logo h2 span {
@@ -97,23 +97,28 @@ header {
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        
+    }
+    header .header-login a{
+        margin-right:60px;
     }
 
-        header .header-login .fa-shopping-cart {
-            margin-right: 50px;
-        }
-
         header .header-login i {
-            padding: 10px;
+            display:flex;
+            margin-top:5px;
+                 align-items: center;
+        justify-content: center;
+        padding:10px;
             cursor: pointer;
             font-size: 25px;
             border-radius: 50%;
+            color:#000;
+            transition:0.3s all ease;
         }
-
-        header .header-login a {
-            color: #000;
-        }
-
+header .header-login i:hover{
+    color:#fff;
+    background-color:#706233;
+}
 .login {
     height: calc(100% - 80px);
     width: 100%;
@@ -419,4 +424,121 @@ input.chk-bx {
 .google-signin:hover {
     background-color: #706233;
     color: #fff;
+}
+
+
+
+#assignmentContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 1000;
+    width: 500px;
+    height: 550px;
+    display: none;
+}
+.contact-head{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:80px;
+    font-size:25px;
+    border-bottom:2px solid #ddd;
+    color: #706233;
+}
+.contact{
+    height:50px;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+}
+.contact h3{
+    margin-right:20px;
+    font-size:22px;
+}
+.contact p{
+    font-weight:bold;
+    font-size:18px;
+    letter-spacing:2px;
+}
+.email{
+    height:calc(100% - 130px);
+  
+    
+}
+.email-info {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+.email-info span{
+    font-size:20px;
+}
+.email-info span:first-child{
+    margin-right:20px;
+    font-weight:bold
+}
+.email-sender{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 20px;
+}
+.email-sender input{
+    height:100%;
+    width:100%;
+    border:1px solid #717171;
+    padding:5px 10px;
+    font-size:16px;
+}
+.email-content{
+    height:160px;
+    padding:10px 20px;
+}
+.email-content textarea{
+    height:100%;
+    width:100%;
+    resize:none;
+      border:1px solid #717171;
+        padding:10px;
+}
+.email-button {
+    height: calc(100% - 350px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.email-button button{
+    padding:10px 20px;
+    margin-right:10px;
+    border-color:transparent;
+    cursor:pointer;
+    transition:0.3s all ease;
+}
+.email-button button:hover{
+    opacity:0.5;
+}
+.email-button button:first-child{
+    background-color:#6E93f7;
+    color:#fff;
+}
+.email-button button:nth-child(2){
+    background-color:red;
+    color:#fff;
+}
+#bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: 999;
+    display: none;
 }
